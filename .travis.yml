@@ -1,0 +1,12 @@
+language: ruby
+env:
+  global:
+    - TRAVIS=true
+  matrix:
+    - TASK=rspec
+rvm:
+  - 2.1.0
+services:
+  - redis-server
+notifications:
+  email: false
