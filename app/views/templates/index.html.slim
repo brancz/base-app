@@ -1,4 +1,6 @@
 - if user_signed_in?
-	= "Signed in!"
+  = "Signed in!"
+  = link_to 'Logout', "#/logout"
 - else
-	= "Not signed in!"
+  = "Not signed in!"
+  = link_to 'Sign in', "#/login"
