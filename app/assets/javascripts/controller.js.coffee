@@ -1,7 +1,10 @@
 @baseControllers = angular.module("baseControllers", [])
 @baseControllers.controller "LoginCtrl", [
   "$scope"
-  ($scope) ->
+  "sessionService"
+  ($scope, sessionService) ->
+    $scope.logMeIn = ->
+      sessionService.logMeIn($scope.login)
     $scope.message = "LOGIN CONTROLLER!"
 ]
 @baseControllers.controller "HomeCtrl", [
@@ -9,10 +12,17 @@
   ($scope) ->
     $scope.message = "HOME CONTROLLER!"
 ]
-@baseControllers.controller "LogoutCtrl", [
+@baseControllers.controller "SecretCtrl", [
   "$scope"
-  "$http"
-  ($scope, $http) ->
-    $http.delete('/users').success(data) ->
-      $location.path('/login')
+  ($scope) ->
+    $scope.message = "SECRET CONTROLLER!"
+]
+@baseControllers.controller "MainCtrl", [
+  "$scope"
+  "sessionService"
+  ($scope, sessionService) ->
+    $scope.logMeOut = ->
+      sessionService.logout()
+    $scope.logMeIn = ->
+      sessionService.logMeIn($scope.login)
 ]

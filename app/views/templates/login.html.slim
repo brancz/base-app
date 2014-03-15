@@ -7,26 +7,26 @@
         .clearfix
 
       .panel-body
-        = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+        form id='login_form' name='loginForm' ng-submit='logMeIn()' role='login'
           .input-group
             span.input-group-addon
               i.glyphicon.glyphicon-user
-            = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'E-Mail'
+            input type='email' class='form-control' placeholder='E-Mail' autofocus='autofocus' ng-model='login.user_email' name='email'
           
           .input-group
             span.input-group-addon
               i.glyphicon.glyphicon-lock
-            = f.password_field :password, class: 'form-control', placeholder: 'Password'
+            input type='password' class='form-control' placeholder='Password' ng-model='login.user_password' name='password'
 
           - if devise_mapping.rememberable?
             .input-group.no_margin
               .checkbox
-                = f.check_box :remember_me
-                = f.label :remember_me
+                = check_box_tag :remember_me
+                = label_tag :remember_me
 
           .form-group
             .controls
-              = f.submit 'Sign in', class: 'btn btn-success'
+              = submit_tag 'Sign in', class: 'btn btn-success'
 
           hr
 

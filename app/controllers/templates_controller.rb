@@ -1,34 +1,40 @@
 class TemplatesController < ApplicationController
-	layout false
-	helper_method :resource_name, :resource_class, :resource, :devise_mapping
+  layout false
+  helper_method :resource_name, :resource_class, :resource, :devise_mapping
 
-	before_filter :authenticate_user!, except: [:index, :login]
+  before_filter :token_authenticate_user!, except: [:index, :login]
+  before_filter :authenticate_user!, except: [:index, :login]
 
-	def index
-	end
-	
-	def login
-	end
+  before_filter lambda{ puts "Logged in? -> #{user_signed_in?}" }
 
-	def template
-		render template: 'templates/' + params[:path], layout: false
-	end
+  def index
+  end
+  
+  def login
+    @resource_name = :user
+    @resource = User.new
+    @resource_class = @resource.class
+  end
 
-	private
+  def template
+    render template: 'templates/' + params[:path], layout: false
+  end
 
-	def resource_name
-		:user
-	end
+  private
 
-	def resource_class
-		resource.class
-	end
+  def resource_name
+    @resource_name
+  end
 
-	def resource
-		@resource ||= User.new
-	end
+  def resource_class
+    @resource_class
+  end
 
-	def devise_mapping
-		@devise_mapping ||= Devise.mappings[:user]
-	end
+  def resource
+    @resource
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
 end
