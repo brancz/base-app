@@ -3,9 +3,19 @@
   "$scope"
   "sessionService"
   ($scope, sessionService) ->
+    $scope.sService = sessionService
     $scope.logMeIn = ->
       sessionService.logMeIn($scope.login)
-    $scope.message = "LOGIN CONTROLLER!"
+    $scope.logMeOut = ->
+      sessionService.logMeOut()
+    $scope.getUserInfo = ->
+      sessionService.getUserInfo()
+]
+@baseControllers.controller "MenuCtrl", [
+  "$scope"
+  "sessionService"
+  ($scope, sessionService) ->
+    $scope.message = "MENU CONTROLLER!"
 ]
 @baseControllers.controller "HomeCtrl", [
   "$scope"
@@ -16,13 +26,4 @@
   "$scope"
   ($scope) ->
     $scope.message = "SECRET CONTROLLER!"
-]
-@baseControllers.controller "MainCtrl", [
-  "$scope"
-  "sessionService"
-  ($scope, sessionService) ->
-    $scope.logMeOut = ->
-      sessionService.logout()
-    $scope.logMeIn = ->
-      sessionService.logMeIn($scope.login)
 ]

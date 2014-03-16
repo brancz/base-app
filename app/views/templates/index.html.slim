@@ -1,8 +1,9 @@
 | This is my home page!
 br
-- if user_signed_in?
-  = "Signed in!"
-  a ng-click='logMeOut()' Logout
-- else
-  = "Not signed in!"
-  = link_to 'Sign in', "#/login"
+div ng-controller='LoginCtrl'
+  div ng-show='sService.loggedIn'
+    | Signed in!
+    a href='#/login' ng-click='sService.logMeOut()' Sign out
+  div ng-hide='sService.loggedIn'
+    | Not signed in!
+    a href='#/login' Sign in

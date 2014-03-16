@@ -2,13 +2,8 @@ class TemplatesController < ApplicationController
   layout false
   helper_method :resource_name, :resource_class, :resource, :devise_mapping
 
-  before_filter :authenticate_user!, except: [:index, :login]
-
   before_filter lambda{ puts "Logged in? -> #{user_signed_in?}" }
 
-  def index
-  end
-  
   def login
     @resource_name = :user
     @resource = User.new

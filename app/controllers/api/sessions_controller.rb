@@ -3,6 +3,10 @@ class Api::SessionsController < Api::BaseController
 	skip_before_filter :token_authenticate_user!, only: :create
 	skip_before_filter :authenticate_user!, only: :create
 
+  def heartbeat
+    
+  end
+
   def create
     if params[:user_email].blank? && params[:user_password].blank?
       unauthenticated
