@@ -9,7 +9,7 @@
     $scope.logMeOut = ->
       sessionService.logMeOut()
     $scope.getUserInfo = ->
-      sessionService.getUserInfo()
+      sessionService.heartbeat()
 ]
 @baseControllers.controller "MenuCtrl", [
   "$scope"

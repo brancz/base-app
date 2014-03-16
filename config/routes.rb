@@ -2,7 +2,11 @@ BaseApp::Application.routes.draw do
   devise_for :users
 
   namespace :api, defaults: { format: :json } do
-    resource :session, only: [:create, :destroy]
+    resource :session, only: [:create, :destroy] do
+      collection do
+        get 'heartbeat'
+      end
+    end
     resource :users, except: [:create, :new, :edit] do
       collection do 
         get 'myself'

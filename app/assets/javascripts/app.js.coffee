@@ -12,15 +12,17 @@
         $cookieStore.put('user_token', data.user_token)
         wrappedService.email = login.user_email
         wrappedService.loggedIn = true
-        console.debug wrappedService
         $location.path('/secret')
       return
 
-    getUserInfo: ->
-      promise = $http.get('/api/users/myself')
+    heartbeat: ->
+      promise = $http.get('/api/session/heartbeat')
       promise.success (data, status, headers, config) ->
-        wrappedService.email = data.email
-        wrappedService.loggedIn = true
+        if data.session_alive
+          inner_promise = $http.get('/api/users/myself')
+          inner_promise.success (data, status, headers, config) ->
+            wrappedService.email = data.email
+            wrappedService.loggedIn = true
       return
 
     logMeOut: ->
