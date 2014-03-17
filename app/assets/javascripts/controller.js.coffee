@@ -11,12 +11,6 @@
     $scope.getUserInfo = ->
       sessionService.heartbeat()
 ]
-@baseControllers.controller "MenuCtrl", [
-  "$scope"
-  "sessionService"
-  ($scope, sessionService) ->
-    $scope.message = "MENU CONTROLLER!"
-]
 @baseControllers.controller "HomeCtrl", [
   "$scope"
   ($scope) ->
