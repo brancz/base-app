@@ -41,7 +41,7 @@
   "$routeProvider"
   ($routeProvider) ->
     $routeProvider.when("/users/sign_in",
-      templateUrl: "/templates/login.html"
+      templateUrl: "/templates/sign_in.html"
       controller: "LoginCtrl"
     ).when("/users/sign_up",
       templateUrl: "/templates/sign_up.html"

@@ -4,7 +4,7 @@ class TemplatesController < ApplicationController
 
   before_filter lambda{ puts "Logged in? -> #{user_signed_in?}" }
 
-  def login
+  def sign_up
     @resource_name = :user
     @resource = User.new
     @resource_class = @resource.class
