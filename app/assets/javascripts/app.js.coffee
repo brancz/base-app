@@ -30,7 +30,7 @@
       promise.success (data, status, headers, config) ->
         $cookieStore.remove('user_token')
         wrappedService.loggedIn = false
-        $location.path('/login')
+        $location.path('/users/sign_up')
       return
 
     email: null
@@ -40,16 +40,19 @@
 @baseApp.config [
   "$routeProvider"
   ($routeProvider) ->
-    $routeProvider.when("/login",
+    $routeProvider.when("/users/sign_in",
       templateUrl: "/templates/login.html"
       controller: "LoginCtrl"
+    ).when("/users/sign_up",
+      templateUrl: "/templates/sign_up.html"
+      controller: "SignUpCtrl"
     ).when("/",
       templateUrl: "/templates/index.html"
       controller: "HomeCtrl"
     ).when("/secret",
       templateUrl: "/templates/secret.html"
       controller: "SecretCtrl"
-    ).otherwise redirectTo: "/login"
+    ).otherwise redirectTo: "/users/sign_in"
 ]
 
 @baseApp.factory "httpRequestInterceptor", ($cookieStore, $location) ->
@@ -58,7 +61,7 @@
     config
   response: (response) ->
     if response.status == 401
-      $location.path('/login')
+      $location.path('/users/sign_up')
     response
 
 @baseApp.config ($httpProvider) ->

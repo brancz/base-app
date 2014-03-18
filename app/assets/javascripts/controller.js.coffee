@@ -11,6 +11,11 @@
     $scope.getUserInfo = ->
       sessionService.heartbeat()
 ]
+@baseControllers.controller "SignUpCtrl", [
+  "$scope"
+  ($scope) ->
+    $scope.message = "SIGNUP CONTROLLER!"
+]
 @baseControllers.controller "HomeCtrl", [
   "$scope"
   ($scope) ->
