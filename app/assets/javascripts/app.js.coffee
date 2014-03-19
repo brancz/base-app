@@ -57,19 +57,19 @@
   "$routeProvider"
   ($routeProvider) ->
     $routeProvider.when("/users/sign_in",
-      templateUrl: "/templates/sign_in.html"
+      templateUrl: "/templates/users/sign_in.html"
       controller: "LoginCtrl"
     ).when("/users/sign_up",
-      templateUrl: "/templates/sign_up.html"
+      templateUrl: "/templates/users/sign_up.html"
       controller: "SignUpCtrl"
     ).when("/users/forgot_password",
-      templateUrl: "/templates/forgot_password.html"
+      templateUrl: "/templates/users/forgot_password.html"
       controller: "ForgotPasswordCtrl"
     ).when("/users/confirmation",
-      templateUrl: "/templates/confirm.html"
+      templateUrl: "/templates/users/confirm.html"
       controller: "ConfirmUserCtrl"
     ).when("/users/unlock",
-      templateUrl: "/templates/unlock.html"
+      templateUrl: "/templates/users/unlock.html"
       controller: "UnlockUserCtrl"
     ).when("/",
       templateUrl: "/templates/index.html"
