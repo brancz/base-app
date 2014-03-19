@@ -13,8 +13,10 @@
 ]
 @baseControllers.controller "SignUpCtrl", [
   "$scope"
-  ($scope) ->
-    $scope.message = "SIGNUP CONTROLLER!"
+  "sessionService"
+  ($scope, sessionService) ->
+    $scope.signup = ->
+      sessionService.signup($scope.login.user_email, $scope.login.user_password)
 ]
 @baseControllers.controller "ForgotPasswordCtrl", [
   "$scope"
