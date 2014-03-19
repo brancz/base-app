@@ -46,6 +46,9 @@
     ).when("/users/sign_up",
       templateUrl: "/templates/sign_up.html"
       controller: "SignUpCtrl"
+    ).when("/users/forgot_password",
+      templateUrl: "/templates/forgot_password.html"
+      controller: "ForgotPasswordCtrl"
     ).when("/",
       templateUrl: "/templates/index.html"
       controller: "HomeCtrl"

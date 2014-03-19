@@ -16,6 +16,11 @@
   ($scope) ->
     $scope.message = "SIGNUP CONTROLLER!"
 ]
+@baseControllers.controller "ForgotPasswordCtrl", [
+  "$scope"
+  ($scope) ->
+    $scope.message = "SIGNUP CONTROLLER!"
+]
 @baseControllers.controller "HomeCtrl", [
   "$scope"
   ($scope) ->
