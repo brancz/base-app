@@ -21,6 +21,11 @@
   ($scope) ->
     $scope.message = "SIGNUP CONTROLLER!"
 ]
+@baseControllers.controller "ConfirmUserCtrl", [
+  "$scope"
+  ($scope) ->
+    $scope.message = "CONFIRM USER CONTROLLER!"
+]
 @baseControllers.controller "HomeCtrl", [
   "$scope"
   ($scope) ->
