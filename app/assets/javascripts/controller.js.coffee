@@ -18,18 +18,24 @@
 ]
 @baseControllers.controller "ForgotPasswordCtrl", [
   "$scope"
-  ($scope) ->
-    $scope.message = "FORGOT PASSWORD CONTROLLER!"
+  "sessionService"
+  ($scope, sessionService) ->
+    $scope.requestPasswordReset = ->
+      sessionService.requestPasswordReset($scope.login.user_email)
 ]
 @baseControllers.controller "ConfirmUserCtrl", [
   "$scope"
-  ($scope) ->
-    $scope.message = "CONFIRM USER CONTROLLER!"
+  "sessionService"
+  ($scope, sessionService) ->
+    $scope.requestConfirmationResend = ->
+      sessionService.requestConfirmationResend($scope.login.user_email)
 ]
 @baseControllers.controller "UnlockUserCtrl", [
   "$scope"
-  ($scope) ->
-    $scope.message = "UNLOCK USER CONTROLLER!"
+  "sessionService"
+  ($scope, sessionService) ->
+    $scope.requestUnlockResend = ->
+      sessionService.requestUnlockResend($scope.login.user_email)
 ]
 @baseControllers.controller "HomeCtrl", [
   "$scope"

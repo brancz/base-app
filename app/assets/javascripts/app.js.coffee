@@ -15,6 +15,14 @@
         $location.path('/secret')
       return
 
+    logMeOut: ->
+      promise = $http.delete('/api/session')
+      promise.success (data, status, headers, config) ->
+        $cookieStore.remove('user_token')
+        wrappedService.loggedIn = false
+        $location.path('/users/sign_up')
+      return
+
     heartbeat: ->
       promise = $http.get('/api/session/heartbeat')
       promise.success (data, status, headers, config) ->
@@ -25,12 +33,16 @@
             wrappedService.loggedIn = true
       return
 
-    logMeOut: ->
-      promise = $http.delete('/api/session')
-      promise.success (data, status, headers, config) ->
-        $cookieStore.remove('user_token')
-        wrappedService.loggedIn = false
-        $location.path('/users/sign_up')
+    requestPasswordReset: (email) ->
+      promise = $http.post('/api/users/password', {'user':{'email':email}})
+      return
+
+    requestConfirmationResend: (email) ->
+      promise = $http.post('/api/users/confirmation', {'user':{'email':email}})
+      return
+
+    requestUnlockResend: (email) ->
+      promise = $http.post('/api/users/unlock', {'user':{'email':email}})
       return
 
     email: null
