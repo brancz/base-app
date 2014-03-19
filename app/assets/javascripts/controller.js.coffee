@@ -19,7 +19,7 @@
 @baseControllers.controller "ForgotPasswordCtrl", [
   "$scope"
   ($scope) ->
-    $scope.message = "SIGNUP CONTROLLER!"
+    $scope.message = "FORGOT PASSWORD CONTROLLER!"
 ]
 @baseControllers.controller "ConfirmUserCtrl", [
   "$scope"
