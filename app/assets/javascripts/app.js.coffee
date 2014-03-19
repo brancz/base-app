@@ -52,6 +52,9 @@
     ).when("/users/confirmation",
       templateUrl: "/templates/confirm.html"
       controller: "ConfirmUserCtrl"
+    ).when("/users/unlock",
+      templateUrl: "/templates/unlock.html"
+      controller: "UnlockUserCtrl"
     ).when("/",
       templateUrl: "/templates/index.html"
       controller: "HomeCtrl"

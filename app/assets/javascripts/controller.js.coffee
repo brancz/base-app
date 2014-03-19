@@ -26,6 +26,11 @@
   ($scope) ->
     $scope.message = "CONFIRM USER CONTROLLER!"
 ]
+@baseControllers.controller "UnlockUserCtrl", [
+  "$scope"
+  ($scope) ->
+    $scope.message = "UNLOCK USER CONTROLLER!"
+]
 @baseControllers.controller "HomeCtrl", [
   "$scope"
   ($scope) ->
