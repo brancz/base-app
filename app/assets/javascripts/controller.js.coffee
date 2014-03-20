@@ -16,7 +16,10 @@
   "sessionService"
   ($scope, sessionService) ->
     $scope.signup = ->
-      sessionService.signup($scope.login.user_email, $scope.login.user_password)
+      promise = sessionService.signup($scope.login.user_email, $scope.login.user_password)
+      promise.error (data, status, headers, config) ->
+        if data.errors
+          $scope.all_errors = data.errors
 ]
 @baseControllers.controller "ForgotPasswordCtrl", [
   "$scope"

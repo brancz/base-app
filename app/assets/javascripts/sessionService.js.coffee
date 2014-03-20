@@ -29,7 +29,7 @@
 
     signup: (email, password) ->
       promise = $http.post('/api/users', {'user':{'email':email, 'password':password, 'password_confirmation':password}})
-      return
+      return promise
 
     requestPasswordReset: (email) ->
       promise = $http.post('/api/users/password', {'user':{'email':email}})
