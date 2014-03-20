@@ -15,11 +15,15 @@
 @import "bootstrap";
 
 body {
-	padding-top: 70px;
+	padding-top: 50px;
 }
 
 td {
 	vertical-align: middle !important;
+}
+
+.unauth-user-panel {
+  margin-top: 20px;
 }
 
 #login_form .input-group,
