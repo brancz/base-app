@@ -11,12 +11,12 @@
           .input-group
             span.input-group-addon
               i.glyphicon.glyphicon-user
-            input type='email' class='form-control' placeholder='E-Mail' autofocus='autofocus' ng-model='login.user_email' name='email'
+            input type='email' class='form-control' placeholder='E-Mail' autofocus='autofocus' ng-model='login.user_email' ng-init="login.user_email = ''" name='email'
           
           .input-group
             span.input-group-addon
               i.glyphicon.glyphicon-lock
-            input type='password' class='form-control' placeholder='Password' ng-model='login.user_password' name='password'
+            input type='password' class='form-control' placeholder='Password' ng-model='login.user_password' ng-init="login.user_password = ''" name='password'
 
           .form-group
             .controls
