@@ -7,7 +7,7 @@
         wrappedService.email = login.user_email
         wrappedService.loggedIn = true
         $location.path('/secret')
-      return
+      return promise
 
     logMeOut: ->
       promise = $http.delete('/api/session')

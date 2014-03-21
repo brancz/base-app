@@ -5,7 +5,11 @@
   ($scope, sessionService) ->
     $scope.sService = sessionService
     $scope.logMeIn = ->
-      sessionService.logMeIn($scope.login)
+      promise = sessionService.logMeIn($scope.login)
+      promise.error (data, status, headers, config) ->
+        if data.error
+          $scope.error = data.error
+          $scope.error_occured = true
     $scope.logMeOut = ->
       sessionService.logMeOut()
     $scope.getUserInfo = ->

@@ -22,8 +22,12 @@ td {
 	vertical-align: middle !important;
 }
 
-.unauth-user-panel {
+.ng-scope.body .container {
   margin-top: 20px;
+}
+
+.container .alert {
+  margin-bottom: 0 !important;
 }
 
 .unauth-user-panel .input-group {
