@@ -8,9 +8,7 @@ class Api::SessionsController < Api::BaseController
   end
 
   def create
-    if params[:user_email].blank? && params[:user_password].blank?
-      unauthenticated
-    else
+    if params[:user_email] && params[:user_password]
       user_email = params[:user_email].presence
       user = user_email && User.find_by_email(user_email)
 
