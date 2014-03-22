@@ -40,14 +40,20 @@
   "sessionService"
   ($scope, sessionService) ->
     $scope.requestConfirmationResend = ->
-      sessionService.requestConfirmationResend($scope.login.user_email)
+      promise = sessionService.requestConfirmationResend($scope.login.user_email)
+      promise.error (data, status, headers, config) ->
+        if data.errors
+          $scope.all_errors = data.errors
 ]
 @baseControllers.controller "UnlockUserCtrl", [
   "$scope"
   "sessionService"
   ($scope, sessionService) ->
     $scope.requestUnlockResend = ->
-      sessionService.requestUnlockResend($scope.login.user_email)
+      promise = sessionService.requestUnlockResend($scope.login.user_email)
+      promise.error (data, status, headers, config) ->
+        if data.errors
+          $scope.all_errors = data.errors
 ]
 @baseControllers.controller "HomeCtrl", [
   "$scope"

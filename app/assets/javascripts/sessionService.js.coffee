@@ -37,11 +37,11 @@
 
     requestConfirmationResend: (email) ->
       promise = $http.post('/api/users/confirmation', {'user':{'email':email}})
-      return
+      return promise
 
     requestUnlockResend: (email) ->
       promise = $http.post('/api/users/unlock', {'user':{'email':email}})
-      return
+      return promise
 
     email: null
     loggedIn: null
