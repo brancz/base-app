@@ -33,7 +33,7 @@
 
     requestPasswordReset: (email) ->
       promise = $http.post('/api/users/password', {'user':{'email':email}})
-      return
+      return promise
 
     requestConfirmationResend: (email) ->
       promise = $http.post('/api/users/confirmation', {'user':{'email':email}})

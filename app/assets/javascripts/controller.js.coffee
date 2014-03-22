@@ -30,7 +30,10 @@
   "sessionService"
   ($scope, sessionService) ->
     $scope.requestPasswordReset = ->
-      sessionService.requestPasswordReset($scope.login.user_email)
+      promise = sessionService.requestPasswordReset($scope.login.user_email)
+      promise.error (data, status, headers, config) ->
+        if data.errors
+          $scope.all_errors = data.errors
 ]
 @baseControllers.controller "ConfirmUserCtrl", [
   "$scope"
