@@ -4,14 +4,14 @@
   "sessionService"
   ($scope, sessionService) ->
     $scope.sService = sessionService
-    $scope.logMeIn = ->
-      promise = sessionService.logMeIn($scope.login)
+    $scope.signin = ->
+      promise = sessionService.signin($scope.login)
       promise.error (data, status, headers, config) ->
         if data.error
           $scope.error = data.error
           $scope.error_occured = true
-    $scope.logMeOut = ->
-      sessionService.logMeOut()
+    $scope.signout = ->
+      sessionService.signout()
     $scope.getUserInfo = ->
       sessionService.heartbeat()
 ]

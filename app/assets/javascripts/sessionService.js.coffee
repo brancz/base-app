@@ -1,19 +1,19 @@
 @baseApp.factory "sessionService", ($cookieStore, $http, $location) ->
   wrappedService =
-    logMeIn: (login) ->
+    signin: (login) ->
       promise = $http.post('/api/session', login)
       promise.success (data, status, headers, config) ->
         $cookieStore.put('user_token', data.user_token)
         wrappedService.email = login.user_email
-        wrappedService.loggedIn = true
+        wrappedService.signedIn = true
         $location.path('/secret')
       return promise
 
-    logMeOut: ->
+    signout: ->
       promise = $http.delete('/api/session')
       promise.success (data, status, headers, config) ->
         $cookieStore.remove('user_token')
-        wrappedService.loggedIn = false
+        wrappedService.signedIn = false
         $location.path('/users/sign_up')
       return
 
@@ -24,7 +24,7 @@
           inner_promise = $http.get('/api/users/myself')
           inner_promise.success (data, status, headers, config) ->
             wrappedService.email = data.email
-            wrappedService.loggedIn = true
+            wrappedService.signedIn = true
       return
 
     signup: (email, password) ->
@@ -44,5 +44,5 @@
       return promise
 
     email: null
-    loggedIn: null
+    signedIn: null
   wrappedService

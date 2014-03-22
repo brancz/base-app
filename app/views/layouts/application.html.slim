@@ -21,13 +21,13 @@ html ng-app='baseApp'
             li
               a href='#/' Home
             li
-              a href='#/secret' ng-show='sService.loggedIn' Secret
+              a href='#/secret' ng-show='sService.signedIn' Secret
           ul.nav.navbar-nav.navbar-right ng-init='getUserInfo()'
-            li ng-show='sService.loggedIn'
+            li ng-show='sService.signedIn'
               a= "{{ sService.email }}"
-            li ng-show='sService.loggedIn'
-              a href='#/users/sign_in' ng-click='logMeOut()' Logout
-            li ng-hide='sService.loggedIn'
-              a href='#/users/sign_in' Login
+            li ng-show='sService.signedIn'
+              a href='#/users/sign_in' ng-click='signout()' Sign out
+            li ng-hide='sService.signedIn'
+              a href='#/users/sign_in' Sign in
 
     .body ng-view=''
