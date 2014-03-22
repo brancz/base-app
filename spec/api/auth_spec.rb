@@ -30,7 +30,12 @@ describe 'API auth' do
       json_response['error'].should == I18n.t("devise.failure.invalid")
     end
 
-    it "should return unauthenticated when providing no email or password" do
+    it "should return invalid email or password when providing empty email and password" do
+      post '/api/session', {user_email:'', user_password:''}
+      json_response['error'].should == I18n.t("devise.failure.invalid")
+    end
+
+    it "should return unauthenticated when providing no email and password" do
       post '/api/session', {}
       json_response['error'].should == I18n.t("devise.failure.unauthenticated")
     end

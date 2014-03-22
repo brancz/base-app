@@ -20,6 +20,8 @@ class Api::SessionsController < Api::BaseController
       else
         invalid_authentication
       end
+    else
+      unauthenticated
     end
   end
 
