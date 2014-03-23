@@ -81,6 +81,14 @@
         $scope.current_password = ''
       promise.error (data, status, headers, config) ->
         $scope.all_errors = data.errors
+    $scope.deleteAccount = ->
+      $('#deleteModal').modal('hide')
+      promise = sessionService.deleteAccount()
+      promise.success (data, status, headers, config) ->
+        sessionService.signedIn = null
+        sessionService.id = null
+        sessionService.email = null
+        $location.path('/users/sign_in')
 ]
 @baseControllers.controller "HomeCtrl", [
   "$scope"

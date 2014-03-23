@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def token_authenticate_user!
-    if authorization_header && current_session_token.valid?
+    if authorization_header && current_session_token.user && current_session_token.valid?
       sign_in current_session_token.user, store: false
     end
   end

@@ -5,7 +5,7 @@ class AuthenticationToken
     @token = existing_token
 
     new = !exists? && @user.nil? && @last_seen.nil? && existing_token.nil?
-    if new || !expired?
+    if new || valid?
       self.last_seen = Time.now
     end
   end
@@ -22,11 +22,11 @@ class AuthenticationToken
   end
 
   def expired?
-    ttl == 0
+    ttl <= 0
   end
 
   def valid?
-    ttl > 0
+    !expired?
   end
 
   def user

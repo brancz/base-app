@@ -51,6 +51,10 @@
       promise = $http.put('/api/users', {'user':{'email':email, 'current_password':current_password}})
       return promise
 
+    deleteAccount: () ->
+      promise = $http.delete('/api/users')
+      return promise
+
     id: null
     email: null
     signedIn: null
