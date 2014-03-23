@@ -57,3 +57,15 @@ form .alert {
 .panel-danger .panel-body ul {
   margin-bottom: 0 !important;
 }
+
+ul.nav.nav-pills.nav-stacked li.danger a,
+ul.nav.nav-pills.nav-stacked li.danger a:hover,
+ul.nav.nav-pills.nav-stacked li.danger a:focus {
+  background-color: #F2DEDE;
+  color: #A94442;
+}
+
+.form-left {
+  max-width: 550px;
+  width: 100%;
+}

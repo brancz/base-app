@@ -61,6 +61,27 @@
         if data.errors
           $scope.all_errors = data.errors
 ]
+@baseControllers.controller "UserProfileCtrl", [
+  "$scope"
+  "$routeParams"
+  "sessionService"
+  "$location"
+  ($scope, $routeParams, sessionService, $location) ->
+    promise = sessionService.heartbeat()
+    promise.success (data, status, headers, config) ->
+      if sessionService.signedIn
+        $scope.email = sessionService.email
+      else
+        $location.path('/users/sign_in')
+    $scope.updateProfile = ->
+      promise = sessionService.updateProfile($scope.email, $scope.current_password)
+      promise.success (data, status, headers, config) ->
+        $scope.infos = []
+        $scope.infos.push "An email has been send to #{$scope.email}, to verify it belongs to you."
+        $scope.current_password = ''
+      promise.error (data, status, headers, config) ->
+        $scope.all_errors = data.errors
+]
 @baseControllers.controller "HomeCtrl", [
   "$scope"
   ($scope) ->

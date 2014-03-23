@@ -1,5 +1,7 @@
 BaseApp::Application.routes.draw do
-  devise_for :users, path_prefix: 'api', defaults: {format: :json}
+  devise_scope :user do get '/api/users/myself', to: 'registrations#myself' end
+
+  devise_for :users, path_prefix: 'api', defaults: {format: :json}, controllers: {registrations: 'registrations'}
 
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :destroy] do
@@ -7,10 +9,8 @@ BaseApp::Application.routes.draw do
         get 'heartbeat'
       end
     end
-    resource :users, except: [:create, :new, :edit] do
-      collection do 
-        get 'myself'
-      end
+    namespace :admin do
+      resource :users, except: [:create, :new, :edit]
     end
   end
 

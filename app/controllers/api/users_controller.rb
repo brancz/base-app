@@ -1,11 +1,5 @@
-class Api::UsersController < Api::BaseController
+class Admin::UsersController < Api::BaseController
   before_action :set_paste, only: [:show, :edit, :destroy]
-
-  # GET /api/users/myself
-  def myself
-    @user = current_user
-    render json: @user
-  end
 
   # GET /api/users.json
   def index

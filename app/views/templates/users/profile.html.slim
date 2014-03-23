@@ -1,0 +1,35 @@
+.container ng-show="all_errors.email.length + all_errors.current_password.length > 0"
+  .alert.alert-danger ng-repeat="error in all_errors.email"
+    | email {{ error }}
+  .alert.alert-danger ng-repeat="error in all_errors.current_password"
+    | Current password {{ error }}
+
+.container ng-show="infos.length > 0"
+  .alert.alert-info ng-repeat="info in infos"
+    | {{ info }}
+
+.container
+  .row
+    .col-md-3
+      .panel.panel-default
+        .panel-body
+          ul.nav.nav-pills.nav-stacked
+            li.active
+              a href='#/users/profile' Profile
+            li.danger
+              a href='#' Delete Account
+    .col-md-9
+      .panel.panel-default
+        .panel-heading
+          .panel-title
+            | Profile
+        .panel-body
+          form.form-left ng-submit='updateProfile()'
+            .form-group
+              label for='user_email' E-Mail
+              input#user_email.form-control type='email' placeholder="E-Mail" ng-model='email'
+            .form-group
+              label for='user_current_password' Current password
+              input#user_password.form-control type='password' placeholder="Password" ng-model='current_password'
+            .form-group
+              button.btn.btn-success type='submit' Update Profile

@@ -4,9 +4,12 @@
       promise = $http.post('/api/session', login)
       promise.success (data, status, headers, config) ->
         $cookieStore.put('user_token', data.user_token)
-        wrappedService.email = login.user_email
-        wrappedService.signedIn = true
-        $location.path('/secret')
+        inner_promise = $http.get('/api/users/myself')
+        inner_promise.success (data, status, headers, config) ->
+          wrappedService.id = data.id
+          wrappedService.email = data.email
+          wrappedService.signedIn = true
+          $location.path('/secret')
       return promise
 
     signout: ->
@@ -14,7 +17,7 @@
       promise.success (data, status, headers, config) ->
         $cookieStore.remove('user_token')
         wrappedService.signedIn = false
-        $location.path('/users/sign_up')
+        $location.path('/users/sign_in')
       return
 
     heartbeat: ->
@@ -23,9 +26,10 @@
         if data.session_alive
           inner_promise = $http.get('/api/users/myself')
           inner_promise.success (data, status, headers, config) ->
+            wrappedService.id = data.id
             wrappedService.email = data.email
             wrappedService.signedIn = true
-      return
+      return promise
 
     signup: (email, password) ->
       promise = $http.post('/api/users', {'user':{'email':email, 'password':password, 'password_confirmation':password}})
@@ -43,6 +47,11 @@
       promise = $http.post('/api/users/unlock', {'user':{'email':email}})
       return promise
 
+    updateProfile: (email, current_password) ->
+      promise = $http.put('/api/users', {'user':{'email':email, 'current_password':current_password}})
+      return promise
+
+    id: null
     email: null
     signedIn: null
   wrappedService
