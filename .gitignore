@@ -17,3 +17,6 @@
 
 # Ignore config file
 /config/config.yml
+
+# Ignore vagrant files
+.vagrant
