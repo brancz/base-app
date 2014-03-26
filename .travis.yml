@@ -10,3 +10,4 @@ services:
   - redis-server
 notifications:
   email: false
+  webhooks: http://hubot-james.herokuapp.com/hubot/travis?room=#kreisverkehr
