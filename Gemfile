@@ -62,3 +62,4 @@ gem 'redis-namespace'
 gem 'micro_token'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+gem 'rails_12factor', group: :production
