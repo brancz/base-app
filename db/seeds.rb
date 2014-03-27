@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user_role = Role.create(name: 'user')
-admin_role = Role.create(name: 'admin')
+user_role = Role.create(name: 'User', internal_name: 'user')
+admin_role = Role.create(name: 'Admin', internal_name: 'admin')
 
 user = User.new({email: 'test@example.com', password: 'test', password_confirmation: 'test'})
 user.confirmation_sent_at = Time.now
