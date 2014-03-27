@@ -1,4 +1,4 @@
-class Admin::UsersController < Api::BaseController
+class Api::Admin::UsersController < Api::Admin::BaseController
   before_action :set_paste, only: [:show, :edit, :destroy]
 
   # GET /api/users.json
