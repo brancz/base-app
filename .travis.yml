@@ -8,6 +8,9 @@ rvm:
   - 2.1.1
 services:
   - redis-server
+before_script:
+  - psql -c "CREATE USER base_app WITH PASSWORD 'password1' CREATEDB;" -U postgres
+  - bundle exec rake db:setup RAILS_ENV=test
 notifications:
   email: false
   webhooks: http://hubot-james.herokuapp.com/hubot/travis?room=#kreisverkehr

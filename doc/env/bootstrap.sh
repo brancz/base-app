@@ -13,3 +13,5 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node &>/dev/null
 
 su -l vagrant -c "curl -L https://get.rvm.io | bash -s stable --rails"
 su -l vagrant -c "source \"/home/vagrant/.rvm/scripts/rvm\""
+
+sudo -u postgres psql -U postgres -d postgres -c "CREATE USER base_app WITH PASSWORD 'password1' CREATEDB;"
