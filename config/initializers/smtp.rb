@@ -1,18 +1,18 @@
 if Rails.env.production?
 
-  VimPastebin::Application.config.action_mailer.default_url_options = { :host => VimPastebin.config.smtp.domain }
-  VimPastebin::Application.config.mailer_sender = VimPastebin.config.email
+  BaseApp::Application.config.action_mailer.default_url_options = { :host => BaseApp.config.smtp.domain }
+  BaseApp::Application.config.mailer_sender = BaseApp.config.email
   ActionMailer::Base.default_options = {
-    :from => VimPastebin.config.email
+    :from => BaseApp.config.email
   }
 
-  if VimPastebin.config.smtp.enabled
+  if BaseApp.config.smtp.enabled
     ActionMailer::Base.smtp_settings = {
-      :port => VimPastebin.config.smtp.port,
-      :address => VimPastebin.config.smtp.host,
-      :user_name => VimPastebin.config.smtp.user,
-      :password => VimPastebin.config.smtp.password,
-      :domain => VimPastebin.config.smtp.domain,
+      :port => BaseApp.config.smtp.port,
+      :address => BaseApp.config.smtp.host,
+      :user_name => BaseApp.config.smtp.user,
+      :password => BaseApp.config.smtp.password,
+      :domain => BaseApp.config.smtp.domain,
       :authentication => :plain
     }
     ActionMailer::Base.delivery_method = :smtp

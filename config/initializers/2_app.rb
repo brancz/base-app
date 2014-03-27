@@ -1,4 +1,4 @@
-module VimPastebin
+module BaseApp
   def self.config
     Settings
   end
