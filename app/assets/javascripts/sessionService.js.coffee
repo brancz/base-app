@@ -33,6 +33,10 @@
               wrappedService.id = data.id
               wrappedService.email = data.email
               wrappedService.signedIn = true
+          else
+            wrappedService.id = null
+            wrappedService.email = null
+            wrappedService.signedIn = false
         return promise
 
       signup: (email, password) ->
@@ -61,6 +65,8 @@
 
       id: null
       email: null
-      signedIn: null
+      signedIn: false
+
+    wrappedService.heartbeat()
     wrappedService
 ]

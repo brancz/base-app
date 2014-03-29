@@ -12,8 +12,6 @@
           $scope.error_occured = true
     $scope.signout = ->
       sessionService.signout()
-    $scope.getUserInfo = ->
-      sessionService.heartbeat()
 ]
 @baseControllers.controller "SignUpCtrl", [
   "$scope"
@@ -85,7 +83,7 @@
       $('#deleteModal').modal('hide')
       promise = sessionService.deleteAccount()
       promise.success (data, status, headers, config) ->
-        sessionService.signedIn = null
+        sessionService.signedIn = false
         sessionService.id = null
         sessionService.email = null
         $location.path('/users/sign_in')
