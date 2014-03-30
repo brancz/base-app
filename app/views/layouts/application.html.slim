@@ -22,7 +22,10 @@ html ng-app='baseApp'
               a href='#/' Home
             li
               a href='#/secret' ng-show='sService.signedIn' Secret
-          ul.nav.navbar-nav.navbar-right ng-init='getUserInfo()'
+          ul.nav.navbar-nav.navbar-right
+            li ng-show='isAdmin()'
+              a href='#/admin'
+                | Admin
             li ng-show='sService.signedIn'
               a href='#/users/profile'
                 | {{ sService.email }}

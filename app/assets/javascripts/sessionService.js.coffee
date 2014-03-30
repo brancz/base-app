@@ -12,6 +12,7 @@
           inner_promise.success (data, status, headers, config) ->
             wrappedService.id = data.id
             wrappedService.email = data.email
+            wrappedService.roles = data.roles
             wrappedService.signedIn = true
             $location.path('/secret')
         return promise
@@ -32,6 +33,7 @@
             inner_promise.success (data, status, headers, config) ->
               wrappedService.id = data.id
               wrappedService.email = data.email
+              wrappedService.roles = data.roles
               wrappedService.signedIn = true
           else
             wrappedService.id = null
@@ -63,8 +65,18 @@
         promise = $http.delete('/api/users')
         return promise
 
+      isAdmin: () ->
+        result = false
+        if wrappedService.roles
+          for role in wrappedService.roles
+            if role.internal_name == "admin"
+              result = true
+              break
+        return result
+
       id: null
       email: null
+      roles: null
       signedIn: false
 
     wrappedService.heartbeat()

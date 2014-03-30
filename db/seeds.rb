@@ -14,3 +14,10 @@ user.confirmation_sent_at = Time.now
 user.roles << user_role
 user.skip_confirmation!
 user.save!(:validate => false)
+
+user = User.new({email: 'admin@example.com', password: 'test', password_confirmation: 'test'})
+user.confirmation_sent_at = Time.now
+user.roles << user_role
+user.roles << admin_role
+user.skip_confirmation!
+user.save!(:validate => false)

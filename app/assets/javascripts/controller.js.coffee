@@ -12,6 +12,8 @@
           $scope.error_occured = true
     $scope.signout = ->
       sessionService.signout()
+    $scope.isAdmin = ->
+      sessionService.isAdmin()
 ]
 @baseControllers.controller "SignUpCtrl", [
   "$scope"
