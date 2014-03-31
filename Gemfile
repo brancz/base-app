@@ -64,3 +64,4 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'rails_12factor', group: :production
 gem 'd3_rails'
+gem 'coveralls', require: false

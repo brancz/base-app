@@ -20,3 +20,6 @@
 
 # Ignore vagrant files
 .vagrant
+
+# Ignore Coveralls files
+coverage/*
