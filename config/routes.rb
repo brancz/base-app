@@ -10,7 +10,8 @@ BaseApp::Application.routes.draw do
       end
     end
     namespace :admin do
-      resource :users, except: [:create, :new, :edit]
+      resources :users, except: [:new, :edit]
+      resources :roles, except: [:new, :edit]
     end
   end
 

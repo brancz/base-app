@@ -18,4 +18,5 @@
 //= require angular-resource
 //= require angular-cookies
 //= require bootstrap
+//= require d3
 //= require_tree .

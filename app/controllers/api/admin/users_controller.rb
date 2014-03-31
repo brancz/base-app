@@ -1,18 +1,18 @@
 class Api::Admin::UsersController < Api::Admin::BaseController
-  before_action :set_paste, only: [:show, :edit, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy]
 
-  # GET /api/users.json
+  # GET /api/admin/users.json
   def index
     authorize! :index, User
     @users = Users.all
   end
 
-  # GET /api/users/1.json
+  # GET /api/admin/users/1.json
   def show
     authorize! :read, @user
   end
 
-  # PUT/PATCH /api/users/1.json
+  # PUT/PATCH /api/admin/users/1.json
   def update
     authorize! :update, @user
     if @paste.update(user_params)
@@ -22,7 +22,7 @@ class Api::Admin::UsersController < Api::Admin::BaseController
     end
   end
 
-  # DELETE /api/users/1.json
+  # DELETE /api/admin/users/1.json
   def destroy
     authorize! :destroy, @user
     @user.destroy

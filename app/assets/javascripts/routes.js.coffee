@@ -25,5 +25,8 @@
     ).when("/secret",
       templateUrl: "/templates/secret.html"
       controller: "SecretCtrl"
+    ).when("/admin",
+      templateUrl: "/templates/admin/dashboard.html"
+      controller: "AdminDashboardCtrl"
     ).otherwise redirectTo: "/users/sign_in"
 ]
