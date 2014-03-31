@@ -21,6 +21,9 @@
         promise = $http.delete('/api/session')
         promise.success (data, status, headers, config) ->
           $cookieStore.remove('user_token')
+          wrappedService.id = null
+          wrappedService.email = null
+          wrappedService.roles = null
           wrappedService.signedIn = false
           $location.path('/users/sign_in')
         return
