@@ -1,11 +1,7 @@
 class Api::SessionsController < Api::BaseController
 	skip_before_filter :verify_authenticity_token
 	skip_before_filter :token_authenticate_user!, only: :create
-	skip_before_filter :authenticate_user!, only: [:create, :heartbeat]
-
-  def heartbeat
-    render json: {session_alive: user_signed_in?}
-  end
+	skip_before_filter :authenticate_user!, only: [:create]
 
   def create
     if params[:user_email] && params[:user_password]

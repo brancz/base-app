@@ -1,26 +1,18 @@
 @baseApp.factory "sessionService", [
-  "$cookieStore"
   "$http"
   "$location"
-  ($cookieStore, $http, $location) ->
+  ($http, $location) ->
     wrappedService =
       signin: (login) ->
-        promise = $http.post('/api/session', login)
+        promise = $http.post('/api/users/sign_in', {user: login})
         promise.success (data, status, headers, config) ->
-          $cookieStore.put('user_token', data.user_token)
-          inner_promise = $http.get('/api/users/myself')
-          inner_promise.success (data, status, headers, config) ->
-            wrappedService.id = data.id
-            wrappedService.email = data.email
-            wrappedService.roles = data.roles
-            wrappedService.signedIn = true
-            $location.path('/secret')
+          wrappedService.getUserData()
+          $location.path('/secret')
         return promise
 
       signout: ->
-        promise = $http.delete('/api/session')
+        promise = $http.delete('/api/users/sign_out')
         promise.success (data, status, headers, config) ->
-          $cookieStore.remove('user_token')
           wrappedService.id = null
           wrappedService.email = null
           wrappedService.roles = null
@@ -28,20 +20,17 @@
           $location.path('/users/sign_in')
         return
 
-      heartbeat: ->
-        promise = $http.get('/api/session/heartbeat')
+      getUserData: ->
+        promise = $http.get('/api/users/me')
         promise.success (data, status, headers, config) ->
-          if data.session_alive
-            inner_promise = $http.get('/api/users/myself')
-            inner_promise.success (data, status, headers, config) ->
-              wrappedService.id = data.id
-              wrappedService.email = data.email
-              wrappedService.roles = data.roles
-              wrappedService.signedIn = true
-          else
-            wrappedService.id = null
-            wrappedService.email = null
-            wrappedService.signedIn = false
+          wrappedService.id = data.id
+          wrappedService.email = data.email
+          wrappedService.roles = data.roles
+          wrappedService.signedIn = true
+        promise.error (data, status, headers, config) ->
+          wrappedService.id = null
+          wrappedService.email = null
+          wrappedService.signedIn = false
         return promise
 
       signup: (email, password) ->
@@ -82,6 +71,6 @@
       roles: null
       signedIn: false
 
-    wrappedService.heartbeat()
+    wrappedService.getUserData()
     wrappedService
 ]

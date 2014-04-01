@@ -5,11 +5,9 @@
 ])
 
 @baseApp.factory "httpRequestInterceptor", [
-  "$cookieStore"
   "$location"
-  ($cookieStore, $location) ->
+  ($location) ->
     request: (config) ->
-      config.headers["Authorization"] = $cookieStore.get('user_token')
       config
     response: (response) ->
       if response.status == 401

@@ -67,7 +67,7 @@
   "sessionService"
   "$location"
   ($scope, $routeParams, sessionService, $location) ->
-    promise = sessionService.heartbeat()
+    promise = sessionService.getUserData()
     promise.success (data, status, headers, config) ->
       if sessionService.signedIn
         $scope.email = sessionService.email
