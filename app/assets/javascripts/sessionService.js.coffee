@@ -50,8 +50,10 @@
         promise = $http.post('/api/users/unlock', {'user':{'email':email}})
         return promise
 
-      updateProfile: (email, current_password) ->
-        promise = $http.put('/api/users', {'user':{'email':email, 'current_password':current_password}})
+      updateProfile: (email, password, password_confirmation, current_password) ->
+        data = {'user':{'email':email, 'password':password, 'password_confirmation':password_confirmation, 'current_password':current_password}}
+        console.debug data
+        promise = $http.put('/api/users', data)
         return promise
 
       deleteAccount: () ->
