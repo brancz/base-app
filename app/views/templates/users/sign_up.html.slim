@@ -34,11 +34,14 @@
                 i.fa.fa-chevron-right
                 |  Sign up
 
-          hr
+          - if devise_mapping.confirmable? && devise_mapping.lockable?
+            hr
 
           .text-85
-            = link_to "Didn't receive confirmation instructions?", '#/users/confirmation'
-            br
+            - if devise_mapping.confirmable?
+              = link_to "Didn't receive confirmation instructions?", '#/users/confirmation'
+              br
 
-            = link_to "Didn't receive unlock instructions?", '#/users/unlock'
-            br
+            - if devise_mapping.lockable?
+              = link_to "Didn't receive unlock instructions?", '#/users/unlock'
+              br

@@ -30,6 +30,7 @@
         promise.error (data, status, headers, config) ->
           wrappedService.id = null
           wrappedService.email = null
+          wrappedService.roles = null
           wrappedService.signedIn = false
         return promise
 

@@ -1,7 +1,7 @@
 class Api::SessionsController < Api::BaseController
-	skip_before_filter :verify_authenticity_token
-	skip_before_filter :token_authenticate_user!, only: :create
-	skip_before_filter :authenticate_user!, only: [:create]
+	skip_before_action :verify_authenticity_token
+	skip_before_action :token_authenticate_user!, only: :create
+	skip_before_action :authenticate_user!, only: [:create]
 
   def create
     if params[:user_email] && params[:user_password]

@@ -7,7 +7,8 @@
     .panel.panel-info
       .panel-heading
         .panel-title.pull-left Sign In
-        .forgot-password.pull-right.text-85= link_to 'Forgot password?', '#/users/forgot_password'
+        - if devise_mapping.recoverable?
+          .forgot-password.pull-right.text-85= link_to 'Forgot password?', '#/users/forgot_password'
         .clearfix
 
       .panel-body
@@ -29,18 +30,22 @@
                 i.fa.fa-chevron-right
                 |  Sign in
 
-          hr
 
-          .form-group
-            .control.text-85
-              | Don't have an account! 
-              = link_to 'Sign Up Here', '#/users/sign_up'
+          - if devise_mapping.registerable?
+            hr
+            .form-group
+              .control.text-85
+                | Don't have an account! 
+                = link_to 'Sign Up Here', '#/users/sign_up'
 
-          hr
+          - if devise_mapping.confirmable? && devise_mapping.lockable?
+            hr
 
           .text-85
-            = link_to "Didn't receive confirmation instructions?", '#/users/confirmation'
-            br
+            - if devise_mapping.confirmable?
+              = link_to "Didn't receive confirmation instructions?", '#/users/confirmation'
+              br
 
-            = link_to "Didn't receive unlock instructions?", '#/users/unlock'
-            br
+            - if devise_mapping.lockable?
+              = link_to "Didn't receive unlock instructions?", '#/users/unlock'
+              br

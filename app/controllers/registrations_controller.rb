@@ -1,9 +1,13 @@
 class RegistrationsController < Devise::RegistrationsController
-  prepend_before_filter :token_authenticate_user!
 
   # GET /api/users/me
   def me
-    render json: current_user
+    @user = current_user
+    if @user
+      render json: @user
+    else
+      render json: {error: t("devise.failure.unauthenticated")}, status: :unauthorized
+    end
   end
 
 end
