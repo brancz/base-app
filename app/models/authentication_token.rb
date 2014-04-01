@@ -61,10 +61,6 @@ class AuthenticationToken
     redis.exists(user_id_key) && redis.exists(last_seen_key)
   end
 
-  def new?
-    !redis.exists(user_id_key) && !redis.exists(last_seen_key) && @user.nil? && @last_seen.nil? && @token.nil?
-  end
-
   private
 
   def set_with_expire(key, val)
