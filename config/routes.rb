@@ -1,7 +1,7 @@
 BaseApp::Application.routes.draw do
-  devise_scope :user do get '/api/users/me', to: 'registrations#me' end
+  devise_scope :user do get '/api/users/me', to: 'users/registrations#me' end
 
-  devise_for :users, path_prefix: 'api', defaults: {format: :json}, controllers: {registrations: 'registrations'}
+  devise_for :users, path_prefix: 'api', defaults: {format: :json}, controllers: {registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
 
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :destroy]

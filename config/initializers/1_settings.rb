@@ -5,3 +5,6 @@ end
 
 Settings['redis'] ||= Settingslogic.new({})
 Settings.redis['url'] ||= ENV["REDISTOGO_URL"]
+
+Settings['omniauth'] ||= Settingslogic.new({})
+Settings.omniauth['enabled'] ||= false
