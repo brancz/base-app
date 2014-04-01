@@ -14,7 +14,7 @@ defaults: &defaults
     domain: 'smtp domain'
 
   #github oauth
-  #oauth:
+  #omniauth:
   #  enabled: false
   #  client_id: 'your_client_id'
   #  client_secret: 'your_client_secret'
