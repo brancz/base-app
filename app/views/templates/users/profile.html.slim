@@ -1,13 +1,3 @@
-.container ng-show="all_errors.email.length + all_errors.current_password.length > 0"
-  .alert.alert-danger ng-repeat="error in all_errors.email"
-    | email {{ error }}
-  .alert.alert-danger ng-repeat="error in all_errors.current_password"
-    | Current password {{ error }}
-
-.container ng-show="infos.length > 0"
-  .alert.alert-info ng-repeat="info in infos"
-    | {{ info }}
-
 .container
   .row
     .col-md-3
