@@ -4,6 +4,8 @@
   "baseControllers"
 ])
 
+@baseControllers = angular.module("baseControllers", [])
+
 @baseApp.factory "httpRequestInterceptor", [
   "$location"
   ($location) ->

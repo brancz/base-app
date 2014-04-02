@@ -18,7 +18,7 @@
       controller: "UnlockUserCtrl"
     ).when("/users/profile",
       templateUrl: "/templates/users/profile.html"
-      controller: "UserProfileCtrl"
+      controller: "UserAccountCtrl"
     ).when("/",
       templateUrl: "/templates/index.html"
       controller: "HomeCtrl"
