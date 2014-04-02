@@ -37,17 +37,17 @@ html ng-app='baseApp'
     #alerts-container ng-controller='AlertsCtrl'
       .container ng-show="alerts.errors.length > 0"
         .alert.alert-danger ng-repeat="error in alerts.errors"
-          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='dismissError($index)' &times;
+          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='alerts.dismissError($index)' &times;
           span
             | {{ error }}
       .container ng-show="alerts.warnings.length > 0"
         .alert.alert-warning ng-repeat="warning in alerts.warnings"
-          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='dismissWarning($index)' &times;
+          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='alerts.dismissWarning($index)' &times;
           span
             | {{ warning }}
       .container ng-show="alerts.infos.length > 0"
         .alert.alert-info ng-repeat="info in alerts.infos"
-          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='dismissInfo($index)' &times;
+          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='alerts.dismissInfo($index)' &times;
           span
             | {{ info }}
 
