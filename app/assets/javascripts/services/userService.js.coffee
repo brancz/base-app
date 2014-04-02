@@ -1,4 +1,4 @@
-@baseApp.factory "sessionService", [
+@baseApp.factory "userService", [
   "$http"
   "$location"
   ($http, $location) ->

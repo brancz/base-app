@@ -1,9 +1,9 @@
 @baseControllers.controller "ForgotPasswordCtrl", [
   "$scope"
-  "sessionService"
-  ($scope, sessionService) ->
+  "userService"
+  ($scope, userService) ->
     $scope.requestPasswordReset = ->
-      promise = sessionService.requestPasswordReset($scope.login.user_email)
+      promise = userService.requestPasswordReset($scope.login.user_email)
       promise.success (data, status, headers, config) ->
         $scope.success = true
       promise.error (data, status, headers, config) ->

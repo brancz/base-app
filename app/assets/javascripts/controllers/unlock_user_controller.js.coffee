@@ -1,9 +1,9 @@
 @baseControllers.controller "UnlockUserCtrl", [
   "$scope"
-  "sessionService"
-  ($scope, sessionService) ->
+  "userService"
+  ($scope, userService) ->
     $scope.requestUnlockResend = ->
-      promise = sessionService.requestUnlockResend($scope.login.user_email)
+      promise = userService.requestUnlockResend($scope.login.user_email)
       promise.success (data, status, headers, config) ->
         $scope.success = true
       promise.error (data, status, headers, config) ->

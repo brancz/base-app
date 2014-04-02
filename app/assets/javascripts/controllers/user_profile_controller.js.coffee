@@ -1,16 +1,16 @@
 @baseControllers.controller "UserProfileCtrl", [
   "$scope"
-  "sessionService"
+  "userService"
   "$location"
-  ($scope, sessionService, $location) ->
-    promise = sessionService.getUserData()
+  ($scope, userService, $location) ->
+    promise = userService.getUserData()
     promise.success (data, status, headers, config) ->
-      if sessionService.signedIn
-        $scope.email = sessionService.email
+      if userService.signedIn
+        $scope.email = userService.email
       else
         $location.path('/users/sign_in')
     $scope.updateProfile = ->
-      promise = sessionService.updateProfile($scope.email, $scope.password, $scope.password_confirmation, $scope.current_password)
+      promise = userService.updateProfile($scope.email, $scope.password, $scope.password_confirmation, $scope.current_password)
       promise.success (data, status, headers, config) ->
         $scope.infos = []
         $scope.infos.push "An email has been send to #{$scope.email}, to verify it belongs to you."
