@@ -34,4 +34,21 @@ html ng-app='baseApp'
             li ng-hide='userService.signedIn'
               a href='#/users/sign_in' Sign in
 
+    #alerts-container ng-controller='AlertsCtrl'
+      .container ng-show="alerts.errors.length > 0"
+        .alert.alert-danger ng-repeat="error in alerts.errors"
+          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='dismissError($index)' &times;
+          span
+            | {{ error }}
+      .container ng-show="alerts.warnings.length > 0"
+        .alert.alert-warning ng-repeat="warning in alerts.warnings"
+          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='dismissWarning($index)' &times;
+          span
+            | {{ warning }}
+      .container ng-show="alerts.infos.length > 0"
+        .alert.alert-info ng-repeat="info in alerts.infos"
+          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='dismissInfo($index)' &times;
+          span
+            | {{ info }}
+
     .body ng-view=''

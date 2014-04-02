@@ -1,14 +1,14 @@
 @baseControllers.controller "LoginCtrl", [
   "$scope"
   "userService"
-  ($scope, userService) ->
+  "alertService"
+  ($scope, userService, alertService) ->
     $scope.userService = userService
     $scope.signin = ->
       promise = userService.signin($scope.login)
       promise.error (data, status, headers, config) ->
         if data.error
-          $scope.error = data.error
-          $scope.error_occured = true
+          alertService.errors.push data.error
     $scope.signout = ->
       userService.signout()
     $scope.isAdmin = ->
