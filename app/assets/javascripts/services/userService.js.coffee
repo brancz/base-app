@@ -21,7 +21,7 @@
         return
 
       getUserData: ->
-        promise = $http.get('/api/users/me')
+        promise = $http.get('/api/users/profile/me')
         promise.success (data, status, headers, config) ->
           wrappedService.id = data.id
           wrappedService.email = data.email

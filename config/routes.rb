@@ -1,9 +1,8 @@
 BaseApp::Application.routes.draw do
-  devise_scope :user do get '/api/users/me', to: 'users/registrations#me' end
-
   devise_for :users, path_prefix: 'api', defaults: {format: :json}, controllers: {registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
 
   namespace :api, defaults: { format: :json } do
+    get '/users/profile/me', to: 'profiles#me'
     resource :session, only: [:create, :destroy]
     namespace :admin do
       resources :users, except: [:new, :edit]
