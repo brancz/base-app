@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/flower-pot/angular-ui-router-rails.git
+  revision: 53df8e5cb3c49d055276eccfb113fecc927bcd39
+  specs:
+    angular-ui-router-rails (0.0.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -250,6 +256,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  angular-ui-router-rails!
   angular_rails_csrf
   angularjs-rails
   bootstrap-sass
