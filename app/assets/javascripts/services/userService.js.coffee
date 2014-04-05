@@ -6,33 +6,33 @@
       signin: (login) ->
         promise = $http.post('/api/users/sign_in', {user: login})
         promise.success (data, status, headers, config) ->
-          wrappedService.getUserData()
+          wrappedService.setUserData(data.id, data.email, data.roles, true)
           $location.path('/secret')
         return promise
 
       signout: ->
         promise = $http.delete('/api/users/sign_out')
         promise.success (data, status, headers, config) ->
-          wrappedService.id = null
-          wrappedService.email = null
-          wrappedService.roles = null
-          wrappedService.signedIn = false
+          wrappedService.resetUserData()
           $location.path('/users/sign_in')
         return
 
       getUserData: ->
         promise = $http.get('/api/users/profile/me')
         promise.success (data, status, headers, config) ->
-          wrappedService.id = data.id
-          wrappedService.email = data.email
-          wrappedService.roles = data.roles
-          wrappedService.signedIn = true
+          wrappedService.setUserData(data.id, data.email, data.roles, true)
         promise.error (data, status, headers, config) ->
-          wrappedService.id = null
-          wrappedService.email = null
-          wrappedService.roles = null
-          wrappedService.signedIn = false
+          wrappedService.resetUserData()
         return promise
+
+      setUserData: (id, email, roles, signedIn) ->
+        wrappedService.id = id
+        wrappedService.email = email
+        wrappedService.roles = roles
+        wrappedService.signedIn = signedIn
+
+      resetUserData: ->
+        wrappedService.setUserData(null, null, null, false)
 
       signup: (email, password) ->
         promise = $http.post('/api/users', {'user':{'email':email, 'password':password, 'password_confirmation':password}})
