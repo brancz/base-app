@@ -67,4 +67,4 @@ gem 'd3_rails'
 gem 'coveralls', require: false
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'angular-ui-router-rails', git: 'git@github.com:flower-pot/angular-ui-router-rails.git'
+gem 'angular-ui-router-rails', ref:'98a785b50da1226947dc2fdb4e499086e15571bb', git: 'https://github.com/flower-pot/angular-ui-router-rails.git'
