@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :omniauthable
 
+  before_create :set_default_role
+
   scope :with_role, lambda{ |role| joins(:roles).where(:roles => {:internal_name => role.to_s}) }
 
   has_and_belongs_to_many :roles
@@ -26,6 +28,10 @@ class User < ActiveRecord::Base
                         )
     end
     user
+  end
+
+  def set_default_role
+    self.roles << Role.find_by_internal_name('user')
   end
 
   def skip_confirmation!
