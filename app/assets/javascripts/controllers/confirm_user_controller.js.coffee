@@ -2,7 +2,19 @@
   "$scope"
   "userService"
   "alertService"
-  ($scope, userService, alertService) ->
+  "$routeParams"
+  "$http"
+  ($scope, userService, alertService, $routeParams, $http) ->
+    if $routeParams.confirmation_token
+      promise = $http.get "/api/users/confirmation?confirmation_token=" + $routeParams.confirmation_token
+      promise.success () -> 
+        alertService.addInfo "Your account has been successfully activated!" 
+      promise.error (data) ->
+        if data.confirmation_token == "is invalid"
+          alertService.addError "Your account could not be activated due to an invalid token!"
+        else
+          alertService.addError "Your account could not be activated. Reason: Token " + data.confirmation_token
+
     $scope.requestConfirmationResend = ->
       promise = userService.requestConfirmationResend($scope.login.user_email)
       promise.success (data, status, headers, config) ->
