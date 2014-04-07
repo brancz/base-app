@@ -17,7 +17,7 @@ script:
 - bundle exec $TASK
 notifications:
   email: false
-  webhooks: http://hubot-james.herokuapp.com/hubot/travis?room=#kreisverkehr
+  webhooks: http://hubot-james.herokuapp.com/hubot/travis?room=kreisverkehr
 deploy:
   provider: heroku
   api_key:
