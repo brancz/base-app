@@ -1,20 +1,27 @@
 language: ruby
 env:
   global:
-    - TRAVIS=true
+  - TRAVIS=true
   matrix:
-    - TASK=rspec spec
+  - TASK=rspec spec
 rvm:
-  - 2.1.1
+- 2.1.1
 services:
-  - redis-server
+- redis-server
 before_script:
-  - "cp config/config.yml.example config/config.yml"
-  - psql -c "CREATE USER base_app WITH PASSWORD 'password1' CREATEDB;" -U postgres
-  - "bundle exec rake db:setup"
-  - "bundle exec rake db:seed"
+- cp config/config.yml.example config/config.yml
+- psql -c "CREATE USER base_app WITH PASSWORD 'password1' CREATEDB;" -U postgres
+- bundle exec rake db:setup
+- bundle exec rake db:seed
 script:
-  - "bundle exec $TASK"
+- bundle exec $TASK
 notifications:
   email: false
   webhooks: http://hubot-james.herokuapp.com/hubot/travis?room=#kreisverkehr
+deploy:
+  provider: heroku
+  api_key:
+    secure: UrPJvmTpJahR1EyDeekf0sJmAd4e/PBjXCKOlavK1XOk9xY/8em1JSljVHB0xvz3R4D5g5lx3jlc36oQW1NZL1NsqD+A4wlXirU84HdNpXEl1pJPwBpaex/dQshLCOZ9OXCVBIQNUxnJ0fTkH8vF/HCCdjE0tnujoQWzYRRYUGk=
+  app: base-app-flowerpot
+  on:
+    repo: flower-pot/base-app
