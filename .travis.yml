@@ -17,11 +17,14 @@ script:
 - bundle exec $TASK
 notifications:
   email: false
-  webhooks: http://hubot-james.herokuapp.com/hubot/travis?room=%23kreisverkehr&type=groupchat
+  irc:
+    channels:
+      - "chat.freenode.net#kreisverkehr"
 deploy:
   provider: heroku
   api_key:
     secure: UrPJvmTpJahR1EyDeekf0sJmAd4e/PBjXCKOlavK1XOk9xY/8em1JSljVHB0xvz3R4D5g5lx3jlc36oQW1NZL1NsqD+A4wlXirU84HdNpXEl1pJPwBpaex/dQshLCOZ9OXCVBIQNUxnJ0fTkH8vF/HCCdjE0tnujoQWzYRRYUGk=
+  run: "rake db:migrate"
   app: base-app-flowerpot
   on:
     repo: flower-pot/base-app
