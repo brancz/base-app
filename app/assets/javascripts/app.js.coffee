@@ -1,7 +1,7 @@
 @baseApp = angular.module("baseApp", [
-  "ngRoute"
   "ngCookies"
   "ngAnimate"
+  "ui.router"
   "baseControllers"
 ])
 

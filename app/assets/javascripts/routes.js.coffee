@@ -1,32 +1,45 @@
 @baseApp.config [
-  "$routeProvider"
-  ($routeProvider) ->
-    $routeProvider.when("/users/sign_in",
+  "$stateProvider"
+  "$urlRouterProvider"
+  ($stateProvider, $urlRouterProvider) ->
+
+    $urlRouterProvider.otherwise "/"
+
+    $stateProvider.state("sign_in",
+      url: "/users/sign_in"
       templateUrl: "/templates/users/sign_in.html"
       controller: "LoginCtrl"
-    ).when("/users/sign_up",
+    ).state("sign_up",
+      url: "/users/sign_up"
       templateUrl: "/templates/users/sign_up.html"
       controller: "SignUpCtrl"
-    ).when("/users/forgot_password",
+    ).state("forgot_password",
+      url: "/users/forgot_password"
       templateUrl: "/templates/users/forgot_password.html"
       controller: "ForgotPasswordCtrl"
-    ).when("/users/confirmation",
+    ).state("confirmation",
+      url: "/users/confirmation"
       templateUrl: "/templates/users/confirm.html"
       controller: "ConfirmUserCtrl"
-    ).when("/users/unlock",
+    ).state("unlock",
+      url: "/users/unlock"
       templateUrl: "/templates/users/unlock.html"
       controller: "UnlockUserCtrl"
-    ).when("/users/profile",
+    ).state("profile",
+      url: "/users/profile"
       templateUrl: "/templates/users/profile.html"
       controller: "UserAccountCtrl"
-    ).when("/",
+    ).state("home",
+      url: "/"
       templateUrl: "/templates/index.html"
       controller: "HomeCtrl"
-    ).when("/secret",
+    ).state("secret",
+      url: "/secret"
       templateUrl: "/templates/secret.html"
       controller: "SecretCtrl"
-    ).when("/admin",
+    ).state("dashboard",
+      url: "/admin"
       templateUrl: "/templates/admin/dashboard.html"
       controller: "AdminDashboardCtrl"
-    ).otherwise redirectTo: "/users/sign_in"
+    )
 ]
