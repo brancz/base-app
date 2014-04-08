@@ -4,12 +4,14 @@ class Api::Admin::UsersController < Api::Admin::BaseController
   # GET /api/admin/users.json
   def index
     authorize! :index, User
-    @users = Users.all
+    @users = User.all
+    render json: @users
   end
 
   # GET /api/admin/users/1.json
   def show
     authorize! :read, @user
+    render json: @user
   end
 
   # PUT/PATCH /api/admin/users/1.json

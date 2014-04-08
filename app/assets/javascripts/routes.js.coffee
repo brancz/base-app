@@ -41,5 +41,9 @@
       url: "/admin"
       templateUrl: "/templates/admin/dashboard.html"
       controller: "AdminDashboardCtrl"
+    ).state("manage_users",
+      url: "/admin/users"
+      templateUrl: "/templates/admin/users/list.html"
+      controller: "ManageUsersCtrl"
     )
 ]
