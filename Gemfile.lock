@@ -114,6 +114,7 @@ GEM
     multi_json (1.8.4)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    ng-t-rails (0.0.1)
     oauth2 (0.9.3)
       faraday (>= 0.8, < 0.10)
       jwt (~> 0.1.8)
@@ -272,6 +273,7 @@ DEPENDENCIES
   jquery-rails
   mailcatcher
   micro_token
+  ng-t-rails
   omniauth
   omniauth-github
   pg
