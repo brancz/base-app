@@ -2,11 +2,11 @@
   "$scope"
   "userService"
   "alertService"
-  "$routeParams"
+  "$location"
   "$http"
-  ($scope, userService, alertService, $routeParams, $http) ->
-    if typeof $routeParams.unlock_token != "undefined"
-      promise = $http.get "/api/users/unlock?unlock_token=" + $routeParams.unlock_token
+  ($scope, userService, alertService, $location, $http) ->
+    if $location.search().unlock_token
+      promise = $http.get "/api/users/unlock?unlock_token=" + $location.search().unlock_token
       promise.success () -> 
         alertService.addInfo "Your account has been successfully unlocked!" 
       promise.error () ->

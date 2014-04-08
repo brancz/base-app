@@ -2,11 +2,11 @@
   "$scope"
   "userService"
   "alertService"
-  "$routeParams"
+  "$location"
   "$http"
-  ($scope, userService, alertService, $routeParams, $http) ->
-    if $routeParams.confirmation_token
-      promise = $http.get "/api/users/confirmation?confirmation_token=" + $routeParams.confirmation_token
+  ($scope, userService, alertService, $location, $http) ->
+    if $location.search().confirmation_token
+      promise = $http.get "/api/users/confirmation?confirmation_token=" + $location.search().confirmation_token
       promise.success () -> 
         alertService.addInfo "Your account has been successfully activated!" 
       promise.error (data) ->
