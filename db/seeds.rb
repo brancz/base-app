@@ -15,14 +15,12 @@ if Rails.env.development?
   puts "Add development user role"
   user = User.new({email: 'test@example.com', password: 'test', password_confirmation: 'test'})
   user.confirmation_sent_at = Time.now
-  user.roles << user_role
   user.skip_confirmation!
   user.save!(:validate => false)
 
   puts "Add development admin role"
   user = User.new({email: 'admin@example.com', password: 'test', password_confirmation: 'test'})
   user.confirmation_sent_at = Time.now
-  user.roles << user_role
   user.roles << admin_role
   user.skip_confirmation!
   user.save!(:validate => false)
