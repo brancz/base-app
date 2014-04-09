@@ -19,4 +19,18 @@
                 td
                 td
                   a.btn.btn-default href='#/admin/users/{{user.id}}/edit' Edit
-                  a.btn.btn-danger href='' Delete
+                  a.btn.btn-danger href='' data-toggle='modal' data-target='#deleteModal' Delete
+
+#deleteModal.modal.fade tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true'
+  form.modal-dialog ng-submit='deleteUser()'
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4#deleteModalLabel.modal-title Delete Account
+      .modal-body
+        p Do you really want to delete your account?
+        p 
+          b Once the account is deleted, it cannot be restored.
+      .modal-footer
+        button.btn.btn-default type="button" data-dismiss="modal" Close
+        button.btn.btn-danger type="submit" Delete Account
