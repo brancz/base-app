@@ -17,10 +17,11 @@ class Api::Admin::UsersController < Api::Admin::BaseController
   # PUT/PATCH /api/admin/users/1.json
   def update
     authorize! :update, @user
-    if @paste.update(user_params)
-      format.json { head :no_content }
+    puts user_params
+    if @user.update(user_params)
+      render json: {}
     else
-      format.json { render json: @user.errors, status: :unprocessable_entity }
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 

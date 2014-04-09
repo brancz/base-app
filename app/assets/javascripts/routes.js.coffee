@@ -45,5 +45,13 @@
       url: "/admin/users"
       templateUrl: "/templates/admin/users/list.html"
       controller: "ManageUsersCtrl"
+    ).state("show_user",
+      url: "/admin/users/:id"
+      templateUrl: "/templates/admin/users/show.html"
+      controller: "ShowUsersCtrl"
+    ).state("edit_user",
+      url: "/admin/users/:id/edit"
+      templateUrl: "/templates/admin/users/edit.html"
+      controller: "EditUsersCtrl"
     )
 ]

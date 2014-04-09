@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading
+          | Show user
+        .panel-body
+          table.table
+            tbody
+              tr
+                td.text-right ID
+                td
+                  | {{user.id}}
+              tr
+                td.text-right E-Mail
+                td
+                  | {{user.email}}
+              tr
+                td
+                td
+                  a.btn.btn-default href='#/admin/users/{{user.id}}/edit' Edit
+                  a.btn.btn-danger href='' Delete
