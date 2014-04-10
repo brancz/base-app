@@ -4,8 +4,10 @@ class Api::Admin::UsersController < Api::Admin::BaseController
   # GET /api/admin/users.json
   def index
     authorize! :index, User
-    @users = User.all
-    render json: @users
+    page = 1
+    page = params[:page]
+    @users = User.page(page)
+    render json: {meta:{total: User.all.count}, users: serialized_users(@users)}
   end
 
   # GET /api/admin/users/1.json
@@ -35,6 +37,10 @@ class Api::Admin::UsersController < Api::Admin::BaseController
   end
 
   private
+
+  def serialized_users(users)
+    ActiveModel::ArraySerializer.new(users).as_json
+  end
 
   def set_user
     @user = User.find(params[:id])

@@ -32,6 +32,16 @@
                 td
                   a href='' data-toggle='modal' data-target='#deleteModal' ng-click="setCurrentUserId(user.id)"
                     i.glyphicon.glyphicon-remove.text-danger
+          ul.pagination style='display:table; margin: 0 auto;'
+            li.disabled
+              a ng-class='{disabled: current_page==1}'
+                | &laquo;
+            li ng-repeat='page in pages' ng-class='{active: page==current_page}'
+              a
+                | {{ page }}
+            li ng-class='{disabled: current_page==pages_count}'
+              a
+                | &raquo;
 
 #deleteModal.modal.fade tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true'
   form.modal-dialog ng-submit='deleteUser()'
