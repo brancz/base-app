@@ -37,7 +37,7 @@
               a ng-class='{disabled: current_page==1}'
                 | &laquo;
             li ng-repeat='page in pages' ng-class='{active: page==current_page}'
-              a
+              a href='' ng-click='loadPage(page)'
                 | {{ page }}
             li ng-class='{disabled: current_page==pages_count}'
               a
