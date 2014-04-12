@@ -18,6 +18,7 @@
 //= require angular-resource
 //= require angular-cookies
 //= require angular-ui-router
+//= require angular-loading-bar
 //= require ng-t
 //= require ng-table
 //= require bootstrap

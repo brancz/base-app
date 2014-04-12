@@ -71,3 +71,4 @@ gem 'angular-ui-router-rails', ref:'98a785b50da1226947dc2fdb4e499086e15571bb', g
 gem 'ng-t-rails'
 gem 'kaminari'
 gem 'ng-table-rails'
+gem 'angular-loading-bar-rails'

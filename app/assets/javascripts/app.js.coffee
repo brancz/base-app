@@ -2,6 +2,7 @@
   "ngCookies"
   "ngAnimate"
   "ui.router"
+  "chieffancypants.loadingBar"
   "baseControllers"
 ])
 
