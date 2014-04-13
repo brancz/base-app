@@ -10,3 +10,5 @@ su -l vagrant -c "rvm install ruby-2.1.0"
 su -l vagrant -c "gem install bundler"
 
 sudo -u postgres psql -U postgres -d postgres -c "CREATE USER base_app WITH PASSWORD 'password1' CREATEDB;"
+
+su -l vagrant -c "cd /home/vagrant/app && bundle install && rake db:create && rake db:migrate && rake db:seed"
