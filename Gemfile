@@ -55,6 +55,7 @@ gem 'angular_rails_csrf'
 gem 'mailcatcher', group: :development
 gem 'rspec-rails', group: [:test, :development]
 gem 'factory_girl', group: :test
+gem 'jasmine-rails', group: :test
 gem 'active_model_serializers'
 gem 'settingslogic'
 gem 'redis'
