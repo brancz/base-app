@@ -1,12 +1,6 @@
-GIT
-  remote: https://github.com/flower-pot/angular-ui-router-rails.git
-  revision: 98a785b50da1226947dc2fdb4e499086e15571bb
-  ref: 98a785b50da1226947dc2fdb4e499086e15571bb
-  specs:
-    angular-ui-router-rails (0.0.4)
-
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.1.0)
       actionpack (= 4.1.0)
@@ -36,10 +30,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    angular-loading-bar-rails (0.0.1)
     angular_rails_csrf (1.0.1)
       rails (>= 3, < 5)
-    angularjs-rails (1.2.16)
     arel (5.0.0)
     bcrypt (3.1.7)
     bootstrap-sass (3.1.1.0)
@@ -59,8 +51,6 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    d3_rails (3.4.4)
-      railties (>= 3.1.0)
     daemons (1.1.9)
     devise (3.2.4)
       bcrypt (~> 3.0)
@@ -123,8 +113,6 @@ GEM
     multi_json (1.9.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    ng-t-rails (0.0.1)
-    ng-table-rails (0.0.1)
     oauth2 (0.9.3)
       faraday (>= 0.8, < 0.10)
       jwt (~> 0.1.8)
@@ -164,6 +152,19 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.0)
       sprockets-rails (~> 2.0)
+    rails-assets-angular (1.2.17)
+    rails-assets-angular-animate (1.2.17)
+      rails-assets-angular (= 1.2.17)
+    rails-assets-angular-cookies (1.2.17)
+      rails-assets-angular (= 1.2.17)
+    rails-assets-angular-loading-bar (0.4.2)
+    rails-assets-angular-resource (1.2.17)
+      rails-assets-angular (= 1.2.17)
+    rails-assets-angular-route (1.2.17)
+      rails-assets-angular (= 1.2.17)
+    rails-assets-angular-ui-router (0.2.10)
+      rails-assets-angular (>= 1.0.8)
+    rails-assets-d3 (3.4.8)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -272,15 +273,11 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
-  angular-loading-bar-rails
-  angular-ui-router-rails!
   angular_rails_csrf
-  angularjs-rails
   bootstrap-sass
   cancan
   coffee-rails (~> 4.0.0)
   coveralls
-  d3_rails
   devise
   factory_girl
   font-awesome-sass
@@ -290,14 +287,20 @@ DEPENDENCIES
   kaminari
   mailcatcher
   micro_token
-  ng-t-rails
-  ng-table-rails
   omniauth
   omniauth-github
   pg
   rack-handlers
   railroady
   rails (= 4.1.0)
+  rails-assets-angular
+  rails-assets-angular-animate
+  rails-assets-angular-cookies
+  rails-assets-angular-loading-bar
+  rails-assets-angular-resource
+  rails-assets-angular-route
+  rails-assets-angular-ui-router
+  rails-assets-d3
   rails_12factor
   redis
   redis-namespace

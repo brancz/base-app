@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 ruby '2.1.0'
 
@@ -50,7 +51,6 @@ gem 'warden'
 gem 'cancan'
 gem 'slim-rails'
 gem 'pg', group: :production
-gem 'angularjs-rails'
 gem 'angular_rails_csrf'
 gem 'mailcatcher', group: :development
 gem 'rspec-rails', group: [:test, :development]
@@ -64,12 +64,15 @@ gem 'micro_token'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'rails_12factor', group: :production
-gem 'd3_rails'
 gem 'coveralls', require: false
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'angular-ui-router-rails', ref:'98a785b50da1226947dc2fdb4e499086e15571bb', git: 'https://github.com/flower-pot/angular-ui-router-rails.git'
-gem 'ng-t-rails'
 gem 'kaminari'
-gem 'ng-table-rails'
-gem 'angular-loading-bar-rails'
+gem 'rails-assets-d3'
+gem 'rails-assets-angular'
+gem 'rails-assets-angular-route'
+gem 'rails-assets-angular-animate'
+gem 'rails-assets-angular-resource'
+gem 'rails-assets-angular-cookies'
+gem 'rails-assets-angular-ui-router'
+gem 'rails-assets-angular-loading-bar'
