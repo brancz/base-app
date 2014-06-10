@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
-ruby '2.1.0'
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails'
 gem 'slim-rails'
 gem 'pg'
 gem 'settingslogic'
@@ -25,14 +25,14 @@ gem 'redis-namespace'
 gem 'micro_token'
 
 # CSS
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
 # JS
 gem 'therubyracer', platforms: :ruby
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'rails-assets-d3'
 gem 'rails-assets-angular'
