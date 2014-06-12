@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'coveralls'
 Coveralls.wear!
 
@@ -45,4 +44,6 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
   config.include JsonApiHelpers, type: :controller
+
+  config.infer_spec_type_from_file_location!
 end

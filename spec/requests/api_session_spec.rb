@@ -21,23 +21,23 @@ describe 'API auth' do
 
       auth_token = json_response['user_token']
 
-      $redis.exists(user_id_key(auth_token)).should be_true
-      $redis.exists(last_seen_key(auth_token)).should be_true
+      expect($redis.exists(user_id_key(auth_token))).to be true
+      expect($redis.exists(last_seen_key(auth_token))).to be true
     end
 
     it "should return invalid email or password for invalid email or password" do
       post '/api/session', {user_email: "test@example.com", user_password: "badpassword"}
-      json_response['error'].should == I18n.t("devise.failure.invalid")
+      expect(json_response['error']).to eq(I18n.t("devise.failure.invalid"))
     end
 
     it "should return invalid email or password when providing empty email and password" do
       post '/api/session', {user_email:'', user_password:''}
-      json_response['error'].should == I18n.t("devise.failure.invalid")
+      expect(json_response['error']).to eq(I18n.t("devise.failure.invalid"))
     end
 
     it "should return unauthenticated when providing no email and password" do
       post '/api/session', {}
-      json_response['error'].should == I18n.t("devise.failure.unauthenticated")
+      expect(json_response['error']).to eq(I18n.t("devise.failure.unauthenticated"))
     end
   end
 
@@ -46,17 +46,17 @@ describe 'API auth' do
       authenticate_successfully
       auth_token = json_response['user_token']
       delete '/api/session', nil, {'HTTP_AUTHORIZATION' => auth_token}
-      response.status.should == 204
-      $redis.exists(user_id_key(auth_token)).should be_false
-      $redis.exists(last_seen_key(auth_token)).should be_false
+      expect(response.status).to eq(204)
+      expect($redis.exists(user_id_key(auth_token))).to be false
+      expect($redis.exists(last_seen_key(auth_token))).to be false
     end
 
     it "should return untauthenticated when deleting a session with a non existent token" do
       auth_token = MicroToken.generate(128)
       delete '/api/session', nil, {'HTTP_AUTHORIZATION' => auth_token}
-      response.status.should == 401
-      $redis.exists(user_id_key(auth_token)).should be_false
-      $redis.exists(last_seen_key(auth_token)).should be_false
+      expect(response.status.should).to eq(401)
+      expect($redis.exists(user_id_key(auth_token))).to be false
+      expect($redis.exists(last_seen_key(auth_token))).to be false
     end
   end
 
