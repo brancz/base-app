@@ -23,6 +23,10 @@ gem 'omniauth-github'
 gem 'redis'
 gem 'redis-namespace'
 gem 'micro_token'
+gem 'better_errors'
+
+# Misc
+gem 'foreman'
 
 # CSS
 gem 'sass-rails'
@@ -57,4 +61,5 @@ group :test, :development do
   gem 'factory_girl'
   gem 'jasmine-rails'
   gem 'coveralls', require: false
+  gem 'rails_best_practices'
 end
