@@ -1,0 +1,51 @@
+.container
+  .unauth-user-panel.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    .panel.panel-info
+      .panel-heading
+        .panel-title.pull-left Sign In
+        - if devise_mapping.recoverable?
+          .forgot-password.pull-right.text-85= link_to 'Forgot password?', '#/users/forgot_password'
+        .clearfix
+
+      .panel-body
+        form id='login_form' name='loginForm' ng-submit='signin()'
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-user
+            input type='email' class='form-control' placeholder='E-Mail' autofocus='autofocus' ng-model='login.email' ng-init="login.email = ''" name='email'
+          
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-lock
+            input type='password' class='form-control' placeholder='Password' ng-model='login.password' ng-init="login.password = ''" name='password'
+
+          .form-group
+            .controls
+              button.btn.btn-success type='submit' style='margin-top: 15px;'
+                i.fa.fa-chevron-right
+                |  Sign in
+              - if BaseApp.config.omniauth.enabled
+                = link_to omniauth_authorize_path(:user, :github), class: 'btn btn-default', style: 'margin-top: 15px; margin-left: 10px;' do
+                  i.fa.fa-github
+                  |  GitHub
+
+
+          - if devise_mapping.registerable?
+            hr
+            .form-group
+              .control.text-85
+                | Don't have an account! 
+                = link_to 'Sign Up Here', '#/users/sign_up'
+
+          - if devise_mapping.confirmable? && devise_mapping.lockable?
+            hr
+
+          .text-85
+            - if devise_mapping.confirmable?
+              = link_to "Didn't receive confirmation instructions?", '#/users/confirmation'
+              br
+
+            - if devise_mapping.lockable?
+              = link_to "Didn't receive unlock instructions?", '#/users/unlock'
+              br

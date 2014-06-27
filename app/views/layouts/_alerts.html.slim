@@ -1,0 +1,14 @@
+- if alert || notice
+  #alerts-container
+    - if alert
+      .container
+        .alert.alert-danger
+          button.close type='button' data-dismiss='alert' aria-hidden='true' &times;
+          span
+            = alert
+    - if notice
+      .container
+        .alert.alert-info
+          button.close type='button' data-dismiss='alert' aria-hidden='true' &times;
+          span
+            = notice

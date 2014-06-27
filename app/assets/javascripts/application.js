@@ -12,13 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular
-//= require angular-route
-//= require angular-animate
-//= require angular-resource
-//= require angular-cookies
-//= require angular-ui-router
-//= require angular-loading-bar
+//= require underscore
+//= require backbone
 //= require bootstrap
 //= require d3
 //= require_tree .
