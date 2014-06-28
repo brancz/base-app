@@ -38,6 +38,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'turbolinks'
 gem 'rails-assets-underscore'
 gem 'rails-assets-backbone'
 gem 'rails-assets-d3'
