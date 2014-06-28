@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
     roles.include? Role.find_by_internal_name(role.to_s)
   end
 
+  def admin?
+    has_role? :admin
+  end
 
   def self.find_for_github_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info

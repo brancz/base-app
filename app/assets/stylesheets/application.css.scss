@@ -70,8 +70,12 @@ ul.nav.nav-pills.nav-stacked li.danger a:focus {
   width: 100%;
 }
 
-#alerts-container > .container:first-child {
-  margin-top: 20px
+#alerts-container .alert:first-child {
+  margin-top: 10px;
+}
+
+#alerts-container > .alert:last-child {
+  margin-bottom: 10px;
 }
 
 .animate-enter {
