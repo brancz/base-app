@@ -1,0 +1,20 @@
+.container
+  .unauth-user-panel.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    .panel.panel-info
+      .panel-heading
+        .panel-title.pull-left Forgot password
+        .forgot-password.pull-right.text-85= link_to 'Back', :back
+        .clearfix
+
+      .panel-body
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-user
+            = f.email_field :email, class: 'form-control', placeholder: 'Email', autofocus: true
+
+          .form-group
+            .controls
+              button.btn.btn-default type='submit' style='margin-top: 15px;'
+                i.fa.fa-chevron-right
+                |  Submit
