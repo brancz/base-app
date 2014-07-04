@@ -36,4 +36,4 @@ html ng-app='baseApp'
     = render 'layouts/alerts'
 
     .body
-      = yield
+      = content_for?(:content) ? yield(:content) : yield
