@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-md-3
+      .panel.panel-default
+        .panel-body
+          ul.nav.nav-pills.nav-stacked
+            li ng-class='{active: mainActive}'
+              a href='' ng-click='includeMainProfile()' Profile
+            li.danger
+              a href='' data-toggle='modal' data-target='#deleteModal' Delete Account
+    .col-md-9
+      #includeWrapper ng-include="template_url"
+
+#deleteModal.modal.fade tabindex='-1' role='dialog' aria-labelledby='deleteModalLabel' aria-hidden='true'
+  form.modal-dialog ng-submit='deleteAccount()'
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4#deleteModalLabel.modal-title Delete Account
+      .modal-body
+        p Do you really want to delete your account?
+        p 
+          b Once the account is deleted, it cannot be restored.
+      .modal-footer
+        button.btn.btn-default type="button" data-dismiss="modal" Close
+        button.btn.btn-danger type="submit" Delete Account

@@ -38,12 +38,16 @@ gem 'therubyracer', platforms: :ruby
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
-gem 'turbolinks'
-gem 'jquery-turbolinks'
-gem 'nprogress-rails'
-gem 'rails-assets-underscore'
-gem 'rails-assets-backbone'
 gem 'rails-assets-d3'
+gem 'rails-assets-angular'
+gem 'rails-assets-angular-route'
+gem 'rails-assets-angular-animate'
+gem 'rails-assets-angular-resource'
+gem 'rails-assets-angular-cookies'
+gem 'rails-assets-angular-ui-router'
+gem 'rails-assets-angular-loading-bar'
+# not js but necessary for rails + angularjs
+gem 'angular_rails_csrf'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

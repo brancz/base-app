@@ -21,8 +21,6 @@ module BaseApp
     # config.i18n.default_locale = :de
     config.to_prepare do
       DeviseController.respond_to :html, :json
-      
-      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "profile" : "application" }
     end
   end
 end

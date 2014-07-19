@@ -13,7 +13,7 @@ class Api::Admin::RolesController < Api::Admin::BaseController
     authorize! :read, @role
     render json: @role
   end
-
+ 
   # POST /api/admin/roles.json
   def create
   end

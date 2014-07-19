@@ -13,14 +13,14 @@ admin_role = Role.create(name: 'Admin', internal_name: 'admin')
 
 if Rails.env.development?
   puts "Add development user"
-  user = User.new({username: 'test', email: 'test@example.com', password: 'test', password_confirmation: 'test'})
+  user = User.new({email: 'test@example.com', password: 'test', password_confirmation: 'test'})
   user.confirmation_sent_at = Time.now
   user.skip_confirmation!
   user.save!(:validate => false)
 
   25.times do |i|
     puts "Add development user"
-    user = User.new({username: "test#{i}", email: "test#{i}@example.com", password: 'test', password_confirmation: 'test'})
+    user = User.new({email: "test#{i}@example.com", password: 'test', password_confirmation: 'test'})
     user.confirmation_sent_at = Time.now
     user.skip_confirmation!
     user.save!(:validate => false)
@@ -28,7 +28,7 @@ if Rails.env.development?
 end
 
 puts "Add development admin"
-user = User.new({username: 'admin', email: 'admin@example.com', password: 'test', password_confirmation: 'test'})
+user = User.new({email: 'admin@example.com', password: 'test', password_confirmation: 'test'})
 user.confirmation_sent_at = Time.now
 user.roles << admin_role
 user.skip_confirmation!

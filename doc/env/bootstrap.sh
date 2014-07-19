@@ -6,7 +6,7 @@ sudo apt-get -y -q install gawk libgdbm-dev pkg-config libffi-dev build-essentia
 
 su -l vagrant -c "curl -L https://get.rvm.io | bash -s stable"
 su -l vagrant -c "source \"/home/vagrant/.rvm/scripts/rvm\""
-su -l vagrant -c "rvm install ruby-2.1.2"
+su -l vagrant -c "rvm install ruby-2.1.0"
 su -l vagrant -c "gem install bundler"
 
 sudo -u postgres psql -U postgres -d postgres -c "CREATE USER base_app WITH PASSWORD 'password1' CREATEDB;"

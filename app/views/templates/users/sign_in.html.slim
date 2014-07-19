@@ -4,21 +4,21 @@
       .panel-heading
         .panel-title.pull-left Sign In
         - if devise_mapping.recoverable?
-          .forgot-password.pull-right.text-85= link_to 'Forgot password?', new_password_path(resource_name)
+          .forgot-password.pull-right.text-85= link_to 'Forgot password?', '#/users/forgot_password'
         .clearfix
 
       .panel-body
-        = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+        form id='login_form' name='loginForm' ng-submit='signin()'
 
           .input-group
             span.input-group-addon
               i.glyphicon.glyphicon-user
-            = f.text_field :login, :autofocus => true, :class => "form-control", :placeholder => "Email or username"
+            input type='email' class='form-control' placeholder='E-Mail' autofocus='autofocus' ng-model='login.email' ng-init="login.email = ''" name='email'
           
           .input-group
             span.input-group-addon
               i.glyphicon.glyphicon-lock
-            = f.password_field :password, :class => "form-control", :placeholder => "Password"
+            input type='password' class='form-control' placeholder='Password' ng-model='login.password' ng-init="login.password = ''" name='password'
 
           .form-group
             .controls
@@ -36,6 +36,16 @@
             .form-group
               .control.text-85
                 | Don't have an account! 
-                = link_to 'Sign Up Here', new_registration_path(resource_name)
+                = link_to 'Sign Up Here', '#/users/sign_up'
 
-          = render 'devise/shared/links'
+          - if devise_mapping.confirmable? && devise_mapping.lockable?
+            hr
+
+          .text-85
+            - if devise_mapping.confirmable?
+              = link_to "Didn't receive confirmation instructions?", '#/users/confirmation'
+              br
+
+            - if devise_mapping.lockable?
+              = link_to "Didn't receive unlock instructions?", '#/users/unlock'
+              br
