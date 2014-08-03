@@ -1,0 +1,9 @@
+master: localhost
+file_client: local
+state_output: mixed
+
+id: development-vm
+
+file_roots:
+  base:
+    - /srv/salt
