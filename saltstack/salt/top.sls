@@ -3,4 +3,5 @@ base:
     - utils
     - ruby
     - postgresql
+    - redis
     - base_app
