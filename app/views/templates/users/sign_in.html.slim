@@ -14,7 +14,7 @@
             span.input-group-addon
               i.glyphicon.glyphicon-user
             input type='email' class='form-control' placeholder='E-Mail' autofocus='autofocus' ng-model='login.email' ng-init="login.email = ''" name='email'
-          
+
           .input-group
             span.input-group-addon
               i.glyphicon.glyphicon-lock
@@ -35,7 +35,7 @@
             hr
             .form-group
               .control.text-85
-                | Don't have an account! 
+                | Don't have an account!
                 = link_to 'Sign Up Here', '#/users/sign_up'
 
           - if devise_mapping.confirmable? && devise_mapping.lockable?
