@@ -15,24 +15,24 @@ html ng-app='baseApp'
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a href='#/' class='navbar-brand' BaseApp
+          a ui-sref='home' class='navbar-brand' BaseApp
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
-              a href='#/' Home
+              a ui-sref='home' Home
             li
-              a href='#/secret' ng-show='userService.signedIn' Secret
+              a ui-sref='secret' ng-show='userService.signedIn' Secret
           ul.nav.navbar-nav.navbar-right
             li ng-show='isAdmin()'
-              a href='#/admin'
+              a ui-sref='dashboard'
                 | Admin
             li ng-show='userService.signedIn'
-              a href='#/users/profile'
+              a ui-sref='profile'
                 | {{ userService.email }}
             li ng-show='userService.signedIn'
-              a href='#/users/sign_in' ng-click='signout()' Sign out
+              a ui-sref='sign_in' ng-click='signout()' Sign out
             li ng-hide='userService.signedIn'
-              a href='#/users/sign_in' Sign in
+              a ui-sref='sign_in' Sign in
 
     #alerts-container ng-controller='AlertsCtrl'
       .container ng-show="alerts.errors.length > 0"

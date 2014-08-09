@@ -33,5 +33,4 @@
   "$locationProvider"
   ($httpProvider, $locationProvider) ->
     $httpProvider.interceptors.push "httpRequestInterceptor"
-    $locationProvider.html5Mode(true)
 ]

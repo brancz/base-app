@@ -3,7 +3,7 @@
     .panel.panel-info
       .panel-heading
         .panel-title.pull-left Sign Up
-        .forgot-password.pull-right.text-85= link_to 'Back', '#/users/sign_in'
+        a.forgot-password.pull-right.text-85 ui-sref='sign_in' Back
         .clearfix
 
       .panel-body
@@ -39,9 +39,9 @@
 
           .text-85
             - if devise_mapping.confirmable?
-              = link_to "Didn't receive confirmation instructions?", '#/users/confirmation'
+              a ui-sref='confirmation' Didn't receive confirmation instructions?
               br
 
             - if devise_mapping.lockable?
-              = link_to "Didn't receive unlock instructions?", '#/users/unlock'
+              a ui-sref='unlock' Didn't receive unlock instructions?
               br
