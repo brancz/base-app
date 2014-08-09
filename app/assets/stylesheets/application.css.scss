@@ -13,6 +13,7 @@
  *= require_tree .
  *= require angular-loading-bar
  */
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
