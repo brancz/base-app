@@ -1,0 +1,42 @@
+.container
+  .unauth-user-panel.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    .panel.panel-info
+      .panel-heading
+        .panel-title.pull-left Sign In
+        - if devise_mapping.recoverable?
+          = link_to 'Forgot password?', new_user_password_path, class: 'forgot-password pull-right text-85'
+        .clearfix
+
+      .panel-body
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-user
+            = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email', autofocus: true
+
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-lock
+            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'
+
+          .form-group
+            .controls
+              button.btn.btn-success type='submit' style='margin-top: 15px;'
+                i.fa.fa-chevron-right
+                |  Sign in
+              - if BaseApp.config.omniauth.enabled
+                = link_to omniauth_authorize_path(:user, :github), class: 'btn btn-default', style: 'margin-top: 15px; margin-left: 10px;' do
+                  i.fa.fa-github
+                  |  GitHub
+
+
+          - if devise_mapping.registerable?
+            hr
+            .form-group
+              .control.text-85
+                span= 'Don\'t have an account! '
+                = link_to ' Sign up here', new_user_registration_path
+
+          = render "devise/shared/links"

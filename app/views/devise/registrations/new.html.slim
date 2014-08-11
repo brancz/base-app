@@ -1,0 +1,34 @@
+.container
+  .unauth-user-panel.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    .panel.panel-info
+      .panel-heading
+        .panel-title.pull-left Sign Up
+        = link_to 'Back', new_user_session_path, class: 'forgot-password pull-right text-85'
+        .clearfix
+
+      .panel-body
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-user
+            = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email'
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-lock
+            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-repeat
+            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Confirm password'
+
+          .form-group
+            .controls
+              button.btn.btn-info type='submit' style='margin-top: 15px;'
+                i.fa.fa-chevron-right
+                |  Sign up
+
+          = render "devise/shared/links"

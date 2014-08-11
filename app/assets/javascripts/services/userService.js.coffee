@@ -1,20 +1,19 @@
 @baseApp.factory "userService", [
   "$http"
   "$location"
-  ($http, $location) ->
+  "$state"
+  ($http, $location, $state) ->
     wrappedService =
       signin: (login) ->
         promise = $http.post('/api/users/sign_in', {user: login})
         promise.success (data, status, headers, config) ->
-          wrappedService.setUserData(data.id, data.email, data.roles, true)
-          $location.path('/secret')
+          location.href = '/'
         return promise
 
       signout: ->
         promise = $http.delete('/api/users/sign_out')
         promise.success (data, status, headers, config) ->
-          wrappedService.resetUserData()
-          $location.path('/users/sign_in')
+          location.href = '/'
         return
 
       getUserData: ->

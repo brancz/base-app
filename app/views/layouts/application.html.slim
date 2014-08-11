@@ -19,20 +19,25 @@ html ng-app='baseApp'
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
-              a ui-sref='home' Home
-            li
-              a ui-sref='secret' ng-show='userService.signedIn' Secret
+              a href='/#/' Home
+            - if user_signed_in?
+              li
+                a ui-sref='secret' Secret
           ul.nav.navbar-nav.navbar-right
-            li ng-show='isAdmin()'
-              a ui-sref='dashboard'
-                | Admin
-            li ng-show='userService.signedIn'
-              a ui-sref='profile'
-                | {{ userService.email }}
-            li ng-show='userService.signedIn'
-              a ui-sref='sign_in' ng-click='signout()' Sign out
-            li ng-hide='userService.signedIn'
-              a ui-sref='sign_in' Sign in
+            - if user_signed_in?
+              - if current_user.has_role? :admin
+                li
+                  a ui-sref='dashboard'
+                    | Admin
+              li
+                a ui-sref='profile'
+                  | {{ userService.email }}
+            - if user_signed_in?
+              li
+                = link_to 'Logout', destroy_user_session_path, :method => :delete
+            - unless user_signed_in?
+              li
+                = link_to 'Login', new_user_session_path
 
     #alerts-container ng-controller='AlertsCtrl'
       .container ng-show="alerts.errors.length > 0"
@@ -51,4 +56,4 @@ html ng-app='baseApp'
           span
             | {{ info }}
 
-    .body ui-view=''
+    = yield

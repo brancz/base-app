@@ -9,7 +9,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
-  # with default "from" parameter.
+  # with default 'from' parameter.
   config.mailer_sender = BaseApp.config.email
 
   # Configure the class responsible to send e-mails.
@@ -197,8 +197,8 @@ Devise.setup do |config|
   # config.encryptor = :sha512
 
   # ==> Scopes configuration
-  # Turn scoped views on. Before rendering "sessions/new", it will first check for
-  # "users/sessions/new". It's turned off by default because it's slower if you
+  # Turn scoped views on. Before rendering 'sessions/new', it will first check for
+  # 'users/sessions/new'. It's turned off by default because it's slower if you
   # are using only default views.
   # config.scoped_views = false
 
@@ -218,7 +218,7 @@ Devise.setup do |config|
   # If you have any extra navigational formats, like :iphone or :mobile, you
   # should add them to the navigational formats lists.
   #
-  # The "*/*" below is required to match Internet Explorer requests.
+  # The '*/*' below is required to match Internet Explorer requests.
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
@@ -254,4 +254,12 @@ Devise.setup do |config|
   if BaseApp.config.omniauth.enabled
     config.omniauth :github, BaseApp.config.omniauth.client_id, BaseApp.config.omniauth.client_secret, {:scope => 'user'}
   end
+end
+
+Rails.application.config.to_prepare do
+  Devise::SessionsController.layout 'unauthenticated'
+  Devise::RegistrationsController.layout 'unauthenticated'
+  Devise::ConfirmationsController.layout 'unauthenticated'
+  Devise::UnlocksController.layout 'unauthenticated'
+  Devise::PasswordsController.layout 'unauthenticated'
 end

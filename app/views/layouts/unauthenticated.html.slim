@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title BaseApp
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  body
+
+    nav.navbar.navbar-default.navbar-fixed-top role='navigation'
+      .container
+        .navbar-header
+          button type='button' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' class='navbar-toggle'
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a ui-sref='home' class='navbar-brand' BaseApp
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a href='/' Home
+          ul.nav.navbar-nav.navbar-right
+            li
+              = link_to 'Login', new_user_session_path
+
+    = yield

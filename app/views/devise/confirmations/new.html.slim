@@ -1,0 +1,22 @@
+.container
+  .unauth-user-panel.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    .panel.panel-info
+      .panel-heading
+        .panel-title.pull-left Resend confirmation instructions
+        = link_to 'Back', new_user_session_path, class: 'forgot-password pull-right text-85'
+        .clearfix
+
+      .panel-body
+        = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-user
+            = f.email_field :email, autofocus: true, placeholder: 'Email', class: 'form-control'
+
+          .form-group
+            .controls
+              button.btn.btn-default type='submit' style='margin-top: 15px;'
+                i.fa.fa-chevron-right
+                |  Resend confirmation instructions
