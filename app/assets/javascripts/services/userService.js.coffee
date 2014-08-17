@@ -4,18 +4,6 @@
   "$state"
   ($http, $location, $state) ->
     wrappedService =
-      signin: (login) ->
-        promise = $http.post('/api/users/sign_in', {user: login})
-        promise.success (data, status, headers, config) ->
-          location.href = '/'
-        return promise
-
-      signout: ->
-        promise = $http.delete('/api/users/sign_out')
-        promise.success (data, status, headers, config) ->
-          location.href = '/'
-        return
-
       getUserData: ->
         promise = $http.get('/api/users/profile/me')
         promise.success (data, status, headers, config) ->
@@ -32,22 +20,6 @@
 
       resetUserData: ->
         wrappedService.setUserData(null, null, null, false)
-
-      signup: (email, password) ->
-        promise = $http.post('/api/users', {'user':{'email':email, 'password':password, 'password_confirmation':password}})
-        return promise
-
-      requestPasswordReset: (email) ->
-        promise = $http.post('/api/users/password', {'user':{'email':email}})
-        return promise
-
-      requestConfirmationResend: (email) ->
-        promise = $http.post('/api/users/confirmation', {'user':{'email':email}})
-        return promise
-
-      requestUnlockResend: (email) ->
-        promise = $http.post('/api/users/unlock', {'user':{'email':email}})
-        return promise
 
       updateProfile: (email, password, password_confirmation, current_password) ->
         data = {'user':{'email':email, 'password':password, 'password_confirmation':password_confirmation, 'current_password':current_password}}

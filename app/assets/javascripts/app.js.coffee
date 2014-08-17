@@ -8,15 +8,6 @@
 
 @baseControllers = angular.module("baseControllers", [])
 
-@baseApp.run [
-  "$templateCache"
-  "$http"
-  ($templateCache, $http) ->
-    $http.get "/templates/users/sign_in.html",
-      cache: $templateCache
-
-]
-
 @baseApp.factory "httpRequestInterceptor", [
   "$location"
   ($location) ->

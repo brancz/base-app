@@ -5,27 +5,7 @@
 
     $urlRouterProvider.otherwise "/"
 
-    $stateProvider.state("sign_in",
-      url: "/users/sign_in"
-      templateUrl: "/templates/users/sign_in.html"
-      controller: "LoginCtrl"
-    ).state("sign_up",
-      url: "/users/sign_up"
-      templateUrl: "/templates/users/sign_up.html"
-      controller: "SignUpCtrl"
-    ).state("forgot_password",
-      url: "/users/forgot_password"
-      templateUrl: "/templates/users/forgot_password.html"
-      controller: "ForgotPasswordCtrl"
-    ).state("confirmation",
-      url: "/users/confirmation"
-      templateUrl: "/templates/users/confirm.html"
-      controller: "ConfirmUserCtrl"
-    ).state("unlock",
-      url: "/users/unlock"
-      templateUrl: "/templates/users/unlock.html"
-      controller: "UnlockUserCtrl"
-    ).state("profile",
+    $stateProvider.state("profile",
       url: "/users/profile"
       templateUrl: "/templates/users/profile.html"
       controller: "UserAccountCtrl"
