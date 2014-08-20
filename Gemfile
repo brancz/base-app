@@ -46,6 +46,8 @@ gem 'rails-assets-angular-resource'
 gem 'rails-assets-angular-cookies'
 gem 'rails-assets-angular-ui-router'
 gem 'rails-assets-angular-loading-bar'
+gem 'rails-assets-underscore'
+gem 'rails-assets-restangular'
 # not js but necessary for rails + angularjs
 gem 'angular_rails_csrf'
 

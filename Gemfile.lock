@@ -176,6 +176,11 @@ GEM
     rails-assets-angular-ui-router (0.2.10)
       rails-assets-angular (>= 1.0.8)
     rails-assets-d3 (3.4.11)
+    rails-assets-lodash (2.4.1)
+    rails-assets-restangular (1.4.0)
+      rails-assets-angular
+      rails-assets-lodash (>= 1.3.0, < 2.5.0)
+    rails-assets-underscore (1.6.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -331,6 +336,8 @@ DEPENDENCIES
   rails-assets-angular-route
   rails-assets-angular-ui-router
   rails-assets-d3
+  rails-assets-restangular
+  rails-assets-underscore
   rails_12factor
   rails_best_practices
   redis
