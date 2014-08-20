@@ -4,6 +4,7 @@
   "ui.router"
   "chieffancypants.loadingBar"
   "baseControllers"
+  "restangular"
 ])
 
 @baseControllers = angular.module("baseControllers", [])

@@ -21,4 +21,6 @@
 //= require angular-loading-bar
 //= require bootstrap
 //= require d3
+//= require underscore
+//= require restangular
 //= require_tree .
