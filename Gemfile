@@ -7,7 +7,6 @@ ruby '2.1.2'
 gem 'rails'
 gem 'slim-rails'
 gem 'pg'
-gem 'settingslogic'
 gem 'active_model_serializers'
 gem 'rails_12factor', group: :production
 gem 'kaminari'
