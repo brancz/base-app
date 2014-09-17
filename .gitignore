@@ -15,9 +15,6 @@
 /log/*.log
 /tmp
 
-# Ignore config file
-/config/config.yml
-
 # Ignore vagrant files
 .vagrant
 
@@ -26,3 +23,6 @@ coverage/*
 
 # rails best practises output file
 rails_best_practices_output.html
+
+# Ignore .env file
+.env
