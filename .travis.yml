@@ -6,7 +6,7 @@ env:
   matrix:
   - TASK=rspec spec
 rvm:
-- 2.1.2
+- 2.1.3
 before_script:
 - source .env.example
 - psql -c "CREATE USER base_app WITH PASSWORD 'password1' CREATEDB;" -U postgres
