@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'ostruct'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -21,6 +22,26 @@ module BaseApp
     # config.i18n.default_locale = :de
     config.to_prepare do
       DeviseController.respond_to :html, :json
+    end
+
+    config.host = ENV['HOST']
+    config.email = ENV['EMAIL']
+
+    config.smtp = OpenStruct.new
+    config.smtp.enabled = !ENV['SMTP_HOST'].blank?
+    if config.smtp.enabled
+      config.smtp.host = ENV['SMTP_HOST']
+      config.smtp.port = ENV['SMTP_PORT']
+      config.smtp.user = ENV['SMTP_USER']
+      config.smtp.pass = ENV['SMTP_PASS']
+      config.smtp.domain = ENV['SMTP_DOMAIN']
+    end
+
+    config.oauth = OpenStruct.new
+    config.oauth.enabled = !ENV['GITHUB_CLIEND_ID'].blank?
+    if config.oauth.enabled
+      config.oauth.client_id = ENV['GITHUB_CLIENT_ID']
+      config.oauth.client_secret = ENV['GITHUB_CLIENT_SECRET']
     end
   end
 end
