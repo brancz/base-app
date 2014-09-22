@@ -13,7 +13,28 @@
     },
     "EMAIL": {
       "description": "Email address used to send registration emails, etc."
-    }
+    },
+    "SMTP_USER": {
+      "description": "Username for the SMTP server you want to use."
+    },
+    "SMTP_PASS": {
+      "description": "Password for the used username."
+    },
+    "SMTP_HOST": {
+      "description": "Hostname of the SMTP server you want to use."
+    },
+    "SMTP_PORT": {
+      "description": "Port of the SMTP server you want to use."
+    },
+    "SMTP_DOMAIN": {
+      "description": "Domain you want to send your emails to be sent from."
+    },
+    "GITHUB_CLIEND_ID": {
+      "description": "Client ID of your GitHub Application. Tip: you will need to register you application with the callback url <PROTOCOLL>://<HOST>/users/auth/github/callback. As stated in the HOST parameter already, if you don't know the url yet then deploy and update the GitHub application once you do know."
+    },
+    "GITHUB_CLIEND_SECRET": {
+      "description": "Client Secret of your GitHub Application."
+    },
   },
   "addons": [
     "heroku-postgresql:hobby-dev"
