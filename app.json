@@ -35,6 +35,14 @@
     "GITHUB_CLIEND_SECRET": {
       "description": "Client Secret of your GitHub Application."
     },
+    "SESSION_SECRET": {
+      "description": "Your applications session secret to ensure the integrity of your cookies.",
+      "generator": "secret"
+    },
+    "PEPPER": {
+      "description": "Add some pepper to your salt.",
+      "generator": "secret"
+    }
   },
   "addons": [
     "heroku-postgresql:hobby-dev"
