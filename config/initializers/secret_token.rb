@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-BaseApp::Application.config.secret_key_base = ENV['SESSION_SECRET'] || 'd42c576870d08c53b59826d64fa35be6360972e1fcf236acf35d2b3d0f74c548a346914e090215890897d10e953cbb36294ad5f82a9669434276bac42f4c6ebf'
+BaseApp::Application.config.secret_key_base ||= ENV['SESSION_SECRET'] 
