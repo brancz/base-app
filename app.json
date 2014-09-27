@@ -35,8 +35,8 @@
     "GITHUB_CLIEND_SECRET": {
       "description": "Client Secret of your GitHub Application."
     },
-    "SESSION_SECRET": {
-      "description": "Your applications session secret to ensure the integrity of your cookies.",
+    "DEVISE_SECRET": {
+      "description": "Your applications secret to sign tokens integrity with.",
       "generator": "secret"
     },
     "PEPPER": {
