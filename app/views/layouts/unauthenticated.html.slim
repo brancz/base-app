@@ -24,4 +24,20 @@ html
             li
               = link_to 'Login', new_user_session_path
 
+    - if notice || alert
+      .container.alerts
+        .row
+          - if notice
+            .alert.alert-success
+              button type="button" class="close" data-dismiss="alert"
+                span aria-hidden="true" &times;
+                span.sr-only Close
+              = notice
+          - if alert
+            .alert.alert-danger
+              button type="button" class="close" data-dismiss="alert"
+                span aria-hidden="true" &times;
+                span.sr-only Close
+              = alert
+
     = yield

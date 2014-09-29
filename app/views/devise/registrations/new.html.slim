@@ -13,7 +13,12 @@
           .input-group
             span.input-group-addon
               i.glyphicon.glyphicon-user
-            = f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email'
+            = f.text_field :username, autofocus: true, class: 'form-control', placeholder: 'Username'
+
+          .input-group
+            span.input-group-addon
+              i.glyphicon.glyphicon-envelope
+            = f.email_field :email, class: 'form-control', placeholder: 'Email'
 
           .input-group
             span.input-group-addon
