@@ -38,7 +38,7 @@ module BaseApp
     end
 
     config.oauth = OpenStruct.new
-    config.oauth.enabled = !ENV['GITHUB_CLIEND_ID'].blank?
+    config.oauth.enabled = !ENV['GITHUB_CLIENT_ID'].blank?
     if config.oauth.enabled
       config.oauth.client_id = ENV['GITHUB_CLIENT_ID']
       config.oauth.client_secret = ENV['GITHUB_CLIENT_SECRET']
