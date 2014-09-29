@@ -15,13 +15,15 @@ class User < ActiveRecord::Base
     roles.include? Role.find_by_internal_name(role.to_s)
   end
 
-
   def self.find_for_github_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
-    user = User.where(:email => data["email"]).first
+    user = User.find_by_email data["email"]
+
+    puts data
 
     unless user
       user = User.create( email: data["email"],
+                          username: data["nickname"],
                           provider: access_token.provider,
                           uid: access_token.uid,
                           password: Devise.friendly_token[0,20],
