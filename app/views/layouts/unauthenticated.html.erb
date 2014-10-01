@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BaseApp</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" ui-sref="home">BaseApp</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/">Home</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= link_to 'Login', new_user_session_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <%- if notice || alert %>
+    <div class="container alerts">
+      <div class="row">
+        <%- if notice %>
+        <div class="alert alert-success">
+          <button class="close" data-dismiss="alert" type="button">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <%= notice %>
+        </div>
+        <%- end %>
+        <%- if alert %>
+        <div class="alert alert-danger">
+          <button class="close" data-dismiss="alert" type="button">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <%= alert %>
+        </div>
+      <%- end %>
+      </div>
+    </div>
+    <%- end %>
+    <%= yield %>
+  </body>
+</html>
