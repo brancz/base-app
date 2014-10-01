@@ -1,5 +1,5 @@
 doctype html
-html ng-app='baseApp'
+html ng-app='app'
   head
     title BaseApp
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
@@ -7,7 +7,7 @@ html ng-app='baseApp'
     = csrf_meta_tags
   body
 
-    nav.navbar.navbar-default.navbar-fixed-top role='navigation' ng-controller='UserCtrl'
+    nav.navbar.navbar-default.navbar-fixed-top role='navigation'
       .container
         .navbar-header
           button type='button' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' class='navbar-toggle'
@@ -19,41 +19,11 @@ html ng-app='baseApp'
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
-              a href='/#/' Home
-            - if user_signed_in?
-              li
-                a ui-sref='secret' Secret
+              a ui-sref='home' Home
+            li
+              a ui-sref='secret' Secret
           ul.nav.navbar-nav.navbar-right
-            - if user_signed_in?
-              - if current_user.has_role? :admin
-                li
-                  a ui-sref='dashboard'
-                    | Admin
-              li
-                a ui-sref='profile'
-                  | {{ userService.email }}
-            - if user_signed_in?
-              li
-                = link_to 'Logout', destroy_user_session_path, :method => :delete
-            - unless user_signed_in?
-              li
-                = link_to 'Login', new_user_session_path
-
-    #alerts-container ng-controller='AlertsCtrl'
-      .container ng-show="alerts.errors.length > 0"
-        .alert.alert-danger ng-repeat="error in alerts.errors"
-          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='alerts.dismissError($index)' &times;
-          span
-            | {{ error }}
-      .container ng-show="alerts.warnings.length > 0"
-        .alert.alert-warning ng-repeat="warning in alerts.warnings"
-          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='alerts.dismissWarning($index)' &times;
-          span
-            | {{ warning }}
-      .container ng-show="alerts.infos.length > 0"
-        .alert.alert-info ng-repeat="info in alerts.infos"
-          button.close type='button' data-dismiss='alert' aria-hidden='true' ng-click='alerts.dismissInfo($index)' &times;
-          span
-            | {{ info }}
+            li
+              = link_to 'Logout', destroy_user_session_path, :method => :delete
 
     = yield
