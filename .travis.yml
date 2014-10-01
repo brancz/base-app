@@ -1,8 +1,6 @@
 language: ruby
 cache: bundler
 env:
-  global:
-  - TRAVIS=true
   matrix:
   - TASK=rspec spec
 rvm:
