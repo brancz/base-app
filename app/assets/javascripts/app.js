@@ -15,7 +15,7 @@ module.config([
         $urlRouterProvider.otherwise("/");
         $stateProvider.state("home", {
             url: "/",
-            templateUrl: "/templates/index.html",
+            templateUrl: "/templates/home.html",
             controller: "HomeCtrl"
         }).state("secret", {
             url: "/secret",
