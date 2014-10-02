@@ -4,7 +4,7 @@ class HomeController < ApplicationController
       render template: 'templates/home', layout: 'unauthenticated'
     end
     if user_signed_in?
-      render html: '<div class="body" ui-view=""></div>'.html_safe, layout: 'application'
+      render html: '<div class="body" ui-view=""></div>'.html_safe, layout: 'authenticated'
     end
   end
 end
