@@ -6,7 +6,7 @@ class UserSerializer < ActiveModel::Serializer
     if scope.has_role? :admin
       keys
     else
-      keys - [:last_sign_in_at] - [:failed_attemps]
+      keys - [:last_sign_in_at] - [:failed_attemps] - [:created_at] - [:updated_at]
     end
   end
 end
