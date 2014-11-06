@@ -123,8 +123,8 @@ rvm_bashrc:
 ruby:
   cmd:
     - run
-    - name: rvm install 2.1.3
+    - name: rvm install 2.1.4
     - user: vagrant
-    - unless: test -d $HOME/.rvm/rubies/2.1.3
+    - unless: test -d $HOME/.rvm/rubies/2.1.4
     - require:
       - cmd: rvm_bashrc
